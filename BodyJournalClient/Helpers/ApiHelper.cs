@@ -128,48 +128,6 @@ namespace BodyJournalClient.Helpers
       var response = await client.ExecuteAsync(request);
     }
     #endregion
-
-    #region Session
-
-    public static async Task<string> GetAllSessions()
-    {
-      RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/sessions", Method.GET);
-      var response = await client.ExecuteAsync(request);
-      return response.Content;
-    }
-    public static async Task<string> GetSession(int id)
-    {
-      RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/sessions/{id}", Method.GET);
-      var response = await client.ExecuteAsync(request);
-      return response.Content;
-    }
-    public static async Task CreateSession(string model)
-    {
-      RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/sessions", Method.POST);
-      request.AddHeader("Content-Type", "application/json");
-      request.AddJsonBody(model);
-      var response = await client.ExecuteAsync(request);
-    }
-    public static async Task PutSession(int id, string model)
-    {
-      RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/sessions/{id}", Method.PUT);
-
-      request.AddHeader("Content-Type", "application/json");
-      request.AddJsonBody(model);
-      var response = await client.ExecuteAsync(request);
-    }
-    public static async Task DeleteSession(int id)
-    {
-      RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/sessions/{id}", Method.DELETE);
-      request.AddHeader("Content-Type", "application/json");
-      var response = await client.ExecuteAsync(request);
-    }
-    #endregion
   }
 }
 

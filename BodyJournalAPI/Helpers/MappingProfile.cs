@@ -1,23 +1,44 @@
 using AutoMapper;
-using Entities.DataTransferObjects;
-using Entities.Models;
-using System.Linq;
+using BodyJournalAPI.Entities;
+using BodyJournalAPI.Models;
 
-namespace AccountOwnerServer
+namespace BodyJournalAPI
 {
   public class MappingProfile : Profile
   {
     public MappingProfile()
     {
-      CreateMap<Owner, OwnerDto>();
+      #region Biometric
+      CreateMap<Biometric, ViewBiometric>();
 
-      CreateMap<Account, AccountDto>();
+      CreateMap<CreateBiometric, Biometric>();
 
-      CreateMap<Owner, OwnerDto>();
+      CreateMap<UpdateBiometric, Biometric>();
+      #endregion
 
-      CreateMap<OwnerForCreationDto, Owner>();
+      #region Exercise
+      CreateMap<Exercise, ViewExercise>();
 
-      CreateMap<OwnerForUpdateDto, Owner>();
+      CreateMap<CreateExercise, Exercise>();
+
+      CreateMap<UpdateExercise, Exercise>();
+      #endregion
+
+      #region MuscleGroupFatigue
+      CreateMap<CreateMuscleGroupFatigue, MuscleGroupFatigue>();
+
+      CreateMap<UpdateMuscleGroupFatigue, MuscleGroupFatigue>();
+
+      CreateMap<MuscleGroupFatigue, ViewMuscleGroupFatigue>();
+      #endregion
+
+      #region MuscleGroupFatigue
+      CreateMap<CreateMuscleGroupFatigue, MuscleGroupFatigue>();
+
+      CreateMap<UpdateMuscleGroupFatigue, MuscleGroupFatigue>();
+
+      CreateMap<MuscleGroupFatigue, ViewMuscleGroupFatigue>();
+      #endregion
     }
   }
 }

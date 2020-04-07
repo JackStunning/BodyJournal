@@ -9,7 +9,6 @@ namespace BodyJournalAPI.Repository
     private IExerciseRepository _exercise;
     private IExerciseWorkoutRepository _exerciseWorkout;
     private IWorkoutRepository _workout;
-    private ISessionRepository _session;
     private IBiometricRepository _biometric;
     private IMuscleGroupFatigueRepository _muscleGroupFatigue;
     public RepositoryWrapper(BodyJournalContext bodyJournalContext)
@@ -40,19 +39,6 @@ namespace BodyJournalAPI.Repository
         }
 
         return _workout;
-      }
-    }
-
-    public ISessionRepository Session
-    {
-      get
-      {
-        if (_session == null)
-        {
-          _session = new SessionRepository(_bodyJournalContext);
-        }
-
-        return _session;
       }
     }
 

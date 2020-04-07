@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Contracts;
@@ -21,8 +18,7 @@ namespace BodyJournal.Controllers
       _logger = logger;
     }
 
-    // Exercise Controller CRUD
-
+    #region Exercise
     [HttpGet]
     public IActionResult GetExercise(int Id)
     {
@@ -54,12 +50,9 @@ namespace BodyJournal.Controllers
       _db.Save();
       return Ok();
     }
+    #endregion
 
-    //ExerciseWorkout Controller
-
-
-
-    //Workout Controller CRUD
+    #region Workout
     [HttpGet]
     public IActionResult GetWorkout(int Id)
     {
@@ -91,42 +84,9 @@ namespace BodyJournal.Controllers
       _db.Save();
       return Ok();
     }
-    //Session Controller CRUD
+    #endregion
 
-    [HttpGet]
-    public IActionResult GetSession(int Id)
-    {
-      return Ok(_db.Session.GetSession(Id));
-    }
-    [HttpGet]
-    public IActionResult GetSessions()
-    {
-      return Ok(_db.Session.GetSessions());
-    }
-    [HttpPost]
-    public void CreateSession([FromForm] Session model)
-    {
-      _db.Session.CreateSession(model);
-      _db.Save();
-    }
-    [HttpPut]
-    public IActionResult UpdateSession(int id, [FromBody] Session model)
-    {
-      _db.Session.UpdateSession(id, model);
-      _db.Save();
-      return Ok();
-    }
-
-    [HttpDelete("{id}")]
-    public IActionResult DeleteSession(int id)
-    {
-      _db.Session.DeleteSession(id);
-      _db.Save();
-      return Ok();
-    }
-
-    //Biometric Controller CRUD
-
+    #region Biometric
     [HttpGet]
     public IActionResult GetBiometric(int Id)
     {
@@ -158,9 +118,9 @@ namespace BodyJournal.Controllers
       _db.Save();
       return Ok();
     }
+    #endregion
 
-    // MuscleGroupFatigue Controller CRUD
-
+    #region MuscleGroupFatigue
     [HttpGet]
     public IActionResult GetMuscleGroupFatigue(int Id)
     {
@@ -192,5 +152,7 @@ namespace BodyJournal.Controllers
       _db.Save();
       return Ok();
     }
+    #endregion
+
   }
 }
