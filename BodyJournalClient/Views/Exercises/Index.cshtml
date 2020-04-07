@@ -1,0 +1,19 @@
+<div class="text-center">
+    <h1 class="display-4">Workout Index</h1>
+
+    @* <p>Input: Queryable list of Exercises</p> *@
+    <label for="ExerciseName">Search bar</label>
+    <input name="ExerciseName" type="text" value="@(Model.ExerciseName)">    
+
+    @* <p>Input: Queryable list of Workouts</p> *@
+	<label for="WorkoutName">Search bar</label>
+    <input name="WorkoutName" type="text" value="@(Model.WorkoutName)"> 
+
+    <p>List: Exercises are links to Exercise Details.
+    List also has Delete button</p>
+
+    @* <p>Links: Home, Data, Workouts, Add new Exercise</p> *@
+    <a href="/Home/Index"><p>Home</p></a>
+    <a href="/Data/Index"><p>View Data</p></a>
+    <a href="/Workouts/Index"><p>View Workouts</p></a>
+</div>

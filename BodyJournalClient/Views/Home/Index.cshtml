@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to our Fitness Tracker App!</h1>
+
+    @* <p>Input: Queryable list of Exercises</p> *@
+    <label for="ExerciseName">Search bar</label>
+    <input name="ExerciseName" type="text" value="@(Model.ExerciseName)">    
+
+    @* <p>Input: Queryable list of Workouts</p> *@
+	<label for="WorkoutName">Search bar</label>
+    <input name="WorkoutName" type="text" value="@(Model.WorkoutName)"> 
+
+    <p>Display: Muscle groups most worked on</p>
+    <p>Display: Muscle Groups interactive map</p>
+    <p>Display: Time of workout</p>
+    
+    @*<p>Links: Data, Exercises, Workouts </p>*@
+    <a href="/Data/Index"><p>View Data</p></a>
+    <a href="/Exercises/Index"><p>View Exercises</p></a>
+    <a href="/Workouts/Index"><p>View Workouts</p></a>
+</div>

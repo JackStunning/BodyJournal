@@ -1,0 +1,4 @@
+namespace BodyJournalAPI.Models.MuscleGroupFatigue
+{
+
+}
