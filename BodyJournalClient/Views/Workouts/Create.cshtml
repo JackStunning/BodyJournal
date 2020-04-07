@@ -1,18 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+@model BodyJournalClient.Models.Workout
+
 <div class="text-center">
-    <h1 class="display-4">Workout Create</h1>
+  <h1 class="display-4">Workout Create</h1>
 
-    @* <p>Input: Workout Name</p> *@
-    <label for="WorkoutName">Workout Name</label>
-    <input name="WorkoutName" type="text" value="@(Model.WorkoutName)">    
+  <form asp-action="Create" method="POST">
 
-    @* <p>Input: Workout Name</p> *@
-    <label for="WourkoutDate">Workout Date</label>
-    <input name="WourkoutDate" type="text" value="@(Model.WourkoutDate)">    
+    <label for="Name">Name</label>
+    <input name="Name" type="text" value="@(Model.Name)"> 
+
+    <label for="Satisfaction"> Saftisfaction </label>
+    <input name="Name" type="int" value="@(Model.Satisfaction)">  
+    <div></div>
 
     <p>Input: Drop downs you can choose exercises that can be deleted or added</p>
-    
-    @* <p>Links: Data, Exercises, Workouts</p> *@
-    <a href="/Home/Index"><p>Home</p></a>
-    <a href="/Data/Index"><p>View Data</p></a>
-    <a href="/Exercises/Index"><p>View Exercises</p></a>
+    @Html.Label("Select Exercise")
+    @Html.DropDownList("ExerciseId")<br>
+
+      @* Button: Creat Workout *@
+
+      <input  type="submit" value="Create">
+  </form>
+
+  <div class="links">
+    <a href="/home">Home</a>
+    <a href="/data">View Data</a>
+    <a href="/exercises">View Exercises</a>
+  </div>
 </div>

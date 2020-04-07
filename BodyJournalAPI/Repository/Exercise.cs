@@ -18,7 +18,7 @@ namespace BodyJournalAPI.Repository
       return FindByCondition(entry => entry.Id == id).SingleOrDefault();
     }
 
-    public IQueryable<Exercise> GetExercises()
+    public IEnumerable<Exercise> GetExercises()
     {
       return FindAll();
     }

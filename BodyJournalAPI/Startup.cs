@@ -6,7 +6,7 @@ using BodyJournalAPI.Helpers;
 using BodyJournalAPI.Contracts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using AutoMapper;
 
 namespace BodyJournalAPI
 {
@@ -32,9 +32,12 @@ namespace BodyJournalAPI
     public IConfiguration Configuration { get; }
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddControllers();
-      services.ConfigureRepositoryWrapper();
+
       services.ConfigureMySqlContext(Configuration);
+      services.ConfigureRepositoryWrapper();
+      services.AddAutoMapper(typeof(Startup));
+
+      services.AddControllers();
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {

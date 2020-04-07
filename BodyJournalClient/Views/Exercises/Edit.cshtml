@@ -2,18 +2,19 @@
   Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h2>Edit</h2>
+@model BodyJournalClient.Models.Exercise;
 
-    <h4>Edit this Exercise: ExerciseName</h4>
-    
+
+<div class="text-center">
+<h4>Edit this Exercise: ExerciseName</h4>
+  <form action="Edit">
     <p>Input: Exercise Name</p>
-    <label for="ExerciseName">Exercise Name</label>
-    <input name="ExerciseName" type="text" value="@(Model.ExerciseName)">    
+    <label for="Name">Exercise Name</label>
+    <input name="Name" type="text" value="@(Model.Name)">    
 
     <p>Input: MuscleGroup</p>
     <label for="MuscleGroup">Muscle Group</label>
-    <input name="MuscleGroup" type="text" value="@(Model.MuscleGroup)"> 
+    <input name="MuscleGroup" type="text" value="@(Model.Name)"> 
 
     <p>Input: Intensity</p>
     <label for="Intensity">Intensity</label>
@@ -30,9 +31,10 @@
     <p>Input: Sets</p>
     <label for="Sets">Sets</label>
     <input name="Sets" type="text" value="@(Model.Sets)">  
-
-    @* <p>Links: Home, Data, Exercises, Workouts</p> *@
+  </form>
+  <div class="links">
     <a href="/Home/Index"><p>Home</p></a>
     <a href="/Workouts/Index"><p>View Workouts</p></a>
     <a href="/Exercises/Index"><p>View Exercises</p></a>
+  </div>
 </div>

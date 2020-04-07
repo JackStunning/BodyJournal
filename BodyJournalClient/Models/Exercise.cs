@@ -14,6 +14,7 @@ namespace BodyJournalClient.Models
     public string Name { get; set; }
     public string MuscleGroup { get; set; }
     public int Intensity { get; set; }
+    public static List<string> MuscleGroupList = new List<string> { "Arms", "Abs", "Chest", "Legs", "Shoulders", "Back" };
     public static List<Exercise> GetAllExercises()
     {
       var apiCallTask = ApiHelper.GetAllExercises();

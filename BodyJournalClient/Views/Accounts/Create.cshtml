@@ -1,13 +1,12 @@
 <div class="text-center">
     <h1 class="display-4">Account Create - Register Page</h1>
 
+<form asp-action="Create" method="Post">
     @* <p>Input: Account Name</p> *@
-	<label for="AccountName">Search bar</label>
+    <label for="AccountName">Search bar</label>
     <input name="AccountName" type="text" value="@(Model.AccountName)">    
 
     @* <p>Input: Account Password</p> *@
     <label for="AccountPassword">Search bar</label>
     <input name="AccountPassword" type="text" value="@(Model.AccountPassword)">   
-
-    <p>Button: Create Account</p>
-</div>
+</form>

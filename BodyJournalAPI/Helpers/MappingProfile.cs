@@ -1,8 +1,9 @@
 using AutoMapper;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Models;
+using System.Linq;
 
-namespace BodyJournalAPI
+namespace BodyJournalAPI.Helpers
 {
   public class MappingProfile : Profile
   {

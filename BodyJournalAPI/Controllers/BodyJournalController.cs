@@ -2,8 +2,11 @@
 using Microsoft.Extensions.Logging;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Contracts;
+using AutoMapper;
+using System.Collections.Generic;
+using BodyJournalAPI.Models;
 
-namespace BodyJournal.Controllers
+namespace BodyJournalAPI.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
@@ -11,9 +14,10 @@ namespace BodyJournal.Controllers
   {
     private IRepositoryWrapper _db;
     private readonly ILogger<BodyJournalController> _logger;
-
-    public BodyJournalController(ILogger<BodyJournalController> logger, IRepositoryWrapper db)
+    private IMapper _mapper;
+    public BodyJournalController(ILogger<BodyJournalController> logger, IRepositoryWrapper db, IMapper mapper)
     {
+      _mapper = mapper;
       _db = db;
       _logger = logger;
     }
@@ -27,7 +31,9 @@ namespace BodyJournal.Controllers
     [HttpGet("exercises")]
     public IActionResult GetExercises()
     {
-      return Ok(_db.Exercise.GetExercises());
+      var model = _db.Exercise.GetExercises();
+      var result = _mapper.Map<IEnumerable<ViewExercise>>(model);
+      return Ok(result);
     }
     [HttpPost("exercises")]
     public void CreateExercise([FromForm] Exercise model)

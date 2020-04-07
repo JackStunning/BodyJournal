@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace client
+namespace BodyJournalClient
 {
   public class Startup
   {
@@ -29,12 +29,12 @@ namespace client
         app.UseExceptionHandler("/Home/Error");
         app.UseHsts();
       }
-      app.UseHttpsRedirection();
+      // app.UseHttpsRedirection();
       app.UseStaticFiles();
 
       app.UseRouting();
 
-      app.UseAuthorization();
+      // app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {

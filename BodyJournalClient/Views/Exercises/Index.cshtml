@@ -1,27 +1,55 @@
+@{
+  Layout = "_Layout";
+}
+@using BodyJournalClient.Models;
+@model IEnumerable<BodyJournalClient.Models.Exercise>;
+
+
 <div class="text-center">
     <h1 class="display-4">Workout Index</h1>
+@* Your favorite workouts (based off of satisfaction) find the exercises in the list that hold the  *@
 
-    @* <p>Input: Queryable list of Exercises</p> *@
-    <label for="ExerciseName">Search bar</label>
-    <input name="ExerciseName" type="text" value="@(Model.ExerciseName)">    
+@if(Model.Any())
+  {
+      @foreach (Exercise exercise in Model)
+      {
+        <div class="exercise">
+            <a href="exercises/@(exercise.Id)">
+                <span>@exercise.Name</span>
+                <span>@exercise.Intensity</span>
+            </a>
+        </div>
+    }
+  }
+  else
+  {
+    <h3>You dont have any exercises yet</h3>
+  }
+
+    @* <p>Input: Queryable list of Exercises</p>
+    <label for="Name">Search bar</label>
+    <input name="Name" type="text" value="@(Model.)">     *@
 
     @* <p>Input: Queryable list of Workouts</p> *@
-	<label for="WorkoutName">Search bar</label>
-    <input name="WorkoutName" type="text" value="@(Model.WorkoutName)"> 
+	@* <label for="WorkoutName">Search bar</label>
+    <input name="WorkoutName" type="text" value="@(Model.Name)">  *@
 
     @* <p>List: Exercises are links to Exercise Details.
     List also has Delete button</p> *@
-    <li>
+    @* <li>
         <h3>Exercise Name</h3>
         <p>Muscle Group</p>
         <p>Intensity</p>
         <p>Weight* (optional)</p>
         <p>Sets</p>
         <p>Reps</p>
-    </li>
+    </li> *@
 
-    @* <p>Links: Home, Data, Workouts, Add new Exercise</p> *@
+<div class="links">
     <a href="/Home/Index"><p>Home</p></a>
     <a href="/Data/Index"><p>View Data</p></a>
     <a href="/Workouts/Index"><p>View Workouts</p></a>
+</div>
+    @* <p>Links: Home, Data, Workouts, Add new Exercise</p> *@
+
 </div>
