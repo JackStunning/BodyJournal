@@ -1,7 +1,16 @@
 <div class="text-center">
     <h1 class="display-4">Account Index - Login Page</h1>
-    <p>Input: Account Name</p>
-    <p>Input: Account Password</p>
+
+    @* <p>Input: Account Name</p> *@
+	<label for="AccountName">Enter Account Name</label>
+    <input name="AccountName" type="text" value="@(Model.AccountName)">    
+
+    @* <p>Input: Account Password</p> *@
+    <label for="AccountPassword">Enter Password</label>
+    <input name="AccountPassword" type="text" value="@(Model.AccountPassword)">   
+
     <p>Button: Login, validation check and then enter into Home/Index</p>
-    <p>Link: Register now</p>
+
+    @* <p>Link: Register now</p> *@
+    <a href="/Accounts/Create"><p>Register now</p></a>
 </div>

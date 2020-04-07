@@ -1,4 +1,7 @@
-namespace BodyJournalAPI.Models.Session
+namespace BodyJournalAPI.Models.Workout
 {
+  public class ViewModel
+  {
 
+  }
 }

@@ -9,19 +9,19 @@ using BodyJournalAPI.Contracts;
 namespace BodyJournal.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
-  public class BodyController : ControllerBase
+  [Route("api/[controller]")]
+  public class BodyJournalController : ControllerBase
   {
     private IRepositoryWrapper _db;
-    private readonly ILogger<BodyController> _logger;
+    private readonly ILogger<BodyJournalController> _logger;
 
-    public BodyController(ILogger<BodyController> logger, IRepositoryWrapper db)
+    public BodyJournalController(ILogger<BodyJournalController> logger, IRepositoryWrapper db)
     {
       _db = db;
       _logger = logger;
     }
 
-    // Exercise Controller
+    // Exercise Controller CRUD
 
     [HttpGet]
     public IActionResult GetExercise(int Id)
@@ -55,8 +55,11 @@ namespace BodyJournal.Controllers
       return Ok();
     }
 
+    //ExerciseWorkout Controller
 
-    //Workout Controller
+
+
+    //Workout Controller CRUD
     [HttpGet]
     public IActionResult GetWorkout(int Id)
     {
@@ -88,7 +91,7 @@ namespace BodyJournal.Controllers
       _db.Save();
       return Ok();
     }
-    //Session Controller
+    //Session Controller CRUD
 
     [HttpGet]
     public IActionResult GetSession(int Id)
@@ -122,7 +125,7 @@ namespace BodyJournal.Controllers
       return Ok();
     }
 
-    //Biometric Controller
+    //Biometric Controller CRUD
 
     [HttpGet]
     public IActionResult GetBiometric(int Id)
@@ -156,7 +159,7 @@ namespace BodyJournal.Controllers
       return Ok();
     }
 
-    // MuscleGroupFatigue
+    // MuscleGroupFatigue Controller CRUD
 
     [HttpGet]
     public IActionResult GetMuscleGroupFatigue(int Id)

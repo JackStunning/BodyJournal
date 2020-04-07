@@ -6,6 +6,33 @@
     <h2>Edit</h2>
 
     <h4>Edit this Exercise: ExerciseName</h4>
+    
+    <p>Input: Exercise Name</p>
+    <label for="ExerciseName">Exercise Name</label>
+    <input name="ExerciseName" type="text" value="@(Model.ExerciseName)">    
 
-    <p>Links: Home, Data, Exercises, Workouts</p>
+    <p>Input: MuscleGroup</p>
+    <label for="MuscleGroup">Muscle Group</label>
+    <input name="MuscleGroup" type="text" value="@(Model.MuscleGroup)"> 
+
+    <p>Input: Intensity</p>
+    <label for="Intensity">Intensity</label>
+    <input name="Intensity" type="text" value="@(Model.Intensity)">   
+
+    <p>Input: Weight</p>
+    <label for="Weight">Weight* (optional)</label>
+    <input name="Weight" type="text" value="@(Model.Weight)">   
+
+    <p>Input: Reps</p>
+    <label for="Reps">Reps</label>
+    <input name="Reps" type="text" value="@(Model.Reps)">    
+
+    <p>Input: Sets</p>
+    <label for="Sets">Sets</label>
+    <input name="Sets" type="text" value="@(Model.Sets)">  
+
+    @* <p>Links: Home, Data, Exercises, Workouts</p> *@
+    <a href="/Home/Index"><p>Home</p></a>
+    <a href="/Workouts/Index"><p>View Workouts</p></a>
+    <a href="/Exercises/Index"><p>View Exercises</p></a>
 </div>

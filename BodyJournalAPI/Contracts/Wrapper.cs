@@ -7,6 +7,7 @@ namespace BodyJournalAPI.Contracts
     ISessionRepository Session { get; }
     IBiometricRepository Biometric { get; }
     IMuscleGroupFatigueRepository MuscleGroupFatigue { get; }
+    IExerciseWorkoutRepository ExerciseWorkout { get; }
     void Save();
   }
 }

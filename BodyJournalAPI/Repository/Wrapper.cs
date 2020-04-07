@@ -1,7 +1,5 @@
 using BodyJournalAPI.Helpers;
 using BodyJournalAPI.Contracts;
-using BodyJournalAPI.Entities;
-
 
 namespace BodyJournalAPI.Repository
 {
@@ -9,10 +7,10 @@ namespace BodyJournalAPI.Repository
   {
     private BodyJournalContext _bodyJournalContext;
     private IExerciseRepository _exercise;
+    private IExerciseWorkoutRepository _exerciseWorkout;
     private IWorkoutRepository _workout;
     private ISessionRepository _session;
     private IBiometricRepository _biometric;
-
     private IMuscleGroupFatigueRepository _muscleGroupFatigue;
     public RepositoryWrapper(BodyJournalContext bodyJournalContext)
     {
@@ -79,6 +77,18 @@ namespace BodyJournalAPI.Repository
           _muscleGroupFatigue = new MuscleGroupFatigueRepository(_bodyJournalContext);
         }
         return _muscleGroupFatigue;
+      }
+    }
+    public IExerciseWorkoutRepository ExerciseWorkout
+    {
+      get
+      {
+        if (_exerciseWorkout == null)
+        {
+          _exerciseWorkout = new ExerciseWorkoutRepository(_bodyJournalContext);
+        }
+
+        return _exerciseWorkout;
       }
     }
     public void Save()

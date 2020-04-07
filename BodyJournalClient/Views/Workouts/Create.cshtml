@@ -1,6 +1,18 @@
 <div class="text-center">
     <h1 class="display-4">Workout Create</h1>
-    <p>Input: Workout Name</p>
+
+    @* <p>Input: Workout Name</p> *@
+    <label for="WorkoutName">Workout Name</label>
+    <input name="WorkoutName" type="text" value="@(Model.WorkoutName)">    
+
+    @* <p>Input: Workout Name</p> *@
+    <label for="WourkoutDate">Workout Date</label>
+    <input name="WourkoutDate" type="text" value="@(Model.WourkoutDate)">    
+
     <p>Input: Drop downs you can choose exercises that can be deleted or added</p>
-    <p>Links: Data, Exercises, Workouts</p>
+    
+    @* <p>Links: Data, Exercises, Workouts</p> *@
+    <a href="/Home/Index"><p>Home</p></a>
+    <a href="/Data/Index"><p>View Data</p></a>
+    <a href="/Exercises/Index"><p>View Exercises</p></a>
 </div>

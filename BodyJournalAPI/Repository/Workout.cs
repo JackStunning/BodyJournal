@@ -2,6 +2,9 @@ using BodyJournalAPI.Contracts;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Helpers;
 using System.Linq;
+using System.Collections.Generic;
+
+
 
 namespace BodyJournalAPI.Repository
 {
@@ -14,9 +17,20 @@ namespace BodyJournalAPI.Repository
 
     public Workout GetWorkout(int id)
     {
-      return FindByCondition(entry => entry.Id == id).SingleOrDefault();
-    }
+      IQueryable<ExerciseWorkout> exerciseWorkout = this.BodyJournalContext.ExerciseWorkouts.Where(entry => entry.WorkoutId == id);
 
+      IQueryable<Exercise> exercises = (from e in this.BodyJournalContext.Exercises join ew in exerciseWorkout on e.Id equals ew.ExerciseId select e);
+
+      Workout w = GetWorkout(id);
+      int inten = 0;
+      foreach (Exercise item in exercises)
+      {
+        inten += item.Intensity;
+      }
+      w.IntensityScore = inten;
+
+      return w;
+    }
     public IQueryable<Workout> GetWorkouts()
     {
       return FindAll();

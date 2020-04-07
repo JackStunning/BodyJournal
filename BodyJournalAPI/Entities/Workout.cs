@@ -13,8 +13,7 @@ namespace BodyJournalAPI.Entities
   public class Workout
   {
     public int Id { get; set; }
-    public int UpperIntensityScore { get; set; }
-    public int LowerIntensityScore { get; set; }
+    public int IntensityScore { get; set; }
     public virtual ICollection<Exercise> Exercises { get; set; }
   }
 }

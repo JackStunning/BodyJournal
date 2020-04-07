@@ -1,7 +1,16 @@
 <div class="text-center">
     <h1 class="display-4">Data Edit</h1>
+
     <p>Edit Input: Recording Time</p>
+    <label for="Date">Edit Date</label>
+    <input name="Date" type="text" value="@(Model.Date)">    
+
     <p>Edit Input: Intensity</p>
-    <p>Edit Input: Workouts</p>
+    <label for="Intensity">Edit Intensity</label>
+    <input name="Intensity" type="text" value="@(Model.Intensity)">    
+
     <p>Edit Links: Data, Exercises, Workouts</p>
+    <a href="/Home/Index"><p>Home</p></a>
+    <a href="/Workouts/Index"><p>View Workouts</p></a>
+    <a href="/Exercises/Index"><p>View Exercises</p></a>
 </div>

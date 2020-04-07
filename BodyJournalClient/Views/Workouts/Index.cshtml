@@ -8,8 +8,18 @@
 	<label for="WorkoutName">Search bar</label>
     <input name="WorkoutName" type="text" value="@(Model.WorkoutName)">    
 
-    <p>List: Workouts with their Exercises, Exercises are links to Exercise Details.
-    List also has Delete button</p>
+    @* <p>List: Workouts with their Exercises, Exercises are links to Exercise Details.
+    List also has Delete button</p> *@
+    <h3>Workout</h3>
+    <p>Workout Date</p>
+    <li>
+        <h3>Exercise Name</h3>
+        <p>Muscle Group</p>
+        <p>Intensity</p>
+        <p>Weight* (optional)</p>
+        <p>Sets</p>
+        <p>Reps</p>
+    </li>
 	
     @* <p>Links: Home, Data, Exercises, Add new Workouts</p> *@
     <a href="/Home/Index"><p>Home</p></a>
