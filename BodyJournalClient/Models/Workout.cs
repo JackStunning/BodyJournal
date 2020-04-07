@@ -7,7 +7,11 @@ namespace BodyJournalClient.Models
 {
   public class Workout
   {
-    public int Id;
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Satisfaction { get; set; }
+    public int IntensityScore { get; set; }
+    public IEnumerable<Exercise> Exercises { get; set; }
     public static List<Workout> GetAllWorkouts()
     {
       var apiCallTask = ApiHelper.GetAllWorkouts();

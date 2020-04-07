@@ -128,6 +128,48 @@ namespace BodyJournalClient.Helpers
       var response = await client.ExecuteAsync(request);
     }
     #endregion
+
+    #region MuscleGroupFatigue
+
+    public static async Task<string> GetAllMuscleGroupFatigues()
+    {
+      RestClient client = new RestClient("http://localhost:4000/api");
+      RestRequest request = new RestRequest($"bodyjournal/muscle/status", Method.GET);
+      var response = await client.ExecuteAsync(request);
+      return response.Content;
+    }
+    public static async Task<string> GetMuscleGroupFatigue(int id)
+    {
+      RestClient client = new RestClient("http://localhost:4000/api");
+      RestRequest request = new RestRequest($"bodyjournal/muscle/status/{id}", Method.GET);
+      var response = await client.ExecuteAsync(request);
+      return response.Content;
+    }
+    public static async Task CreateMuscleGroupFatigue(string model)
+    {
+      RestClient client = new RestClient("http://localhost:4000/api");
+      RestRequest request = new RestRequest($"bodyjournal/muscle/status", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(model);
+      var response = await client.ExecuteAsync(request);
+    }
+    public static async Task PutMuscleGroupFatigue(int id, string model)
+    {
+      RestClient client = new RestClient("http://localhost:4000/api");
+      RestRequest request = new RestRequest($"bodyjournal/muscle/status/{id}", Method.PUT);
+
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(model);
+      var response = await client.ExecuteAsync(request);
+    }
+    public static async Task DeleteMuscleGroupFatigue(int id)
+    {
+      RestClient client = new RestClient("http://localhost:4000/api");
+      RestRequest request = new RestRequest($"bodyjournal/muscle/status/{id}", Method.DELETE);
+      request.AddHeader("Content-Type", "application/json");
+      var response = await client.ExecuteAsync(request);
+    }
+    #endregion
   }
 }
 

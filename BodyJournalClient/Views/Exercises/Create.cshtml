@@ -1,13 +1,21 @@
 <div class="text-center">
     <h1 class="display-4">Exercises Create</h1>
-
+    
     <p>Input: Exercise Name</p>
-    <label for="ExerciseName">Exercise Name</label>
-    <input name="ExerciseName" type="text" value="@(Model.ExerciseName)">    
+    <label for="Name">Exercise Name</label>
+    <input name="Name" type="text" value="@(Model.Name)">    
 
     <p>Input: MuscleGroup</p>
     <label for="MuscleGroup">Muscle Group</label>
     <input name="MuscleGroup" type="text" value="@(Model.MuscleGroup)"> 
+
+    <p>Input: Reps</p>
+    <label for="Reps">Reps</label>
+    <input name="Reps" type="text" value="@(Model.Reps)">    
+
+    <p>Input: Sets</p>
+    <label for="Sets">Sets</label>
+    <input name="Sets" type="text" value="@(Model.Sets)">   
 
     <p>Input: Intensity</p>
     <label for="Intensity">Intensity</label>
@@ -17,13 +25,7 @@
     <label for="Weight">Weight* (optional)</label>
     <input name="Weight" type="text" value="@(Model.Weight)">   
 
-    <p>Input: Reps</p>
-    <label for="Reps">Reps</label>
-    <input name="Reps" type="text" value="@(Model.Reps)">    
-
-    <p>Input: Sets</p>
-    <label for="Sets">Sets</label>
-    <input name="Sets" type="text" value="@(Model.Sets)">   
+    
 
     @* <p>Links: Home, Data, Exercises, Workouts</p> *@
     <a href="/Home/Index"><p>Home</p></a>

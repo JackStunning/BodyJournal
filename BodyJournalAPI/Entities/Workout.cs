@@ -20,7 +20,7 @@ namespace BodyJournalAPI.Entities
     // User inputed Satisfaction score out of 5
     public int IntensityScore { get; set; }
     // Adds Score from all Exercises in Workout and returns that score divided by number of exercises
-    public virtual ICollection<Exercise> Exercises { get; set; }
+    // public virtual ICollection<Exercise> Exercises { get; set; }
     // Collection of Exercises that comprises this Workout
   }
 }

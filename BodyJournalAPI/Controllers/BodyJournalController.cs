@@ -18,24 +18,24 @@ namespace BodyJournal.Controllers
       _logger = logger;
     }
 
-    #region Exercise
-    [HttpGet]
+    #region Exercises
+    [HttpGet("exercises/{id}")]
     public IActionResult GetExercise(int Id)
     {
       return Ok(_db.Exercise.GetExercise(Id));
     }
-    [HttpGet]
+    [HttpGet("exercises")]
     public IActionResult GetExercises()
     {
       return Ok(_db.Exercise.GetExercises());
     }
-    [HttpPost]
+    [HttpPost("exercises")]
     public void CreateExercise([FromForm] Exercise model)
     {
       _db.Exercise.CreateExercise(model);
       _db.Save();
     }
-    [HttpPut]
+    [HttpPut("exercises/{id}")]
     public IActionResult UpdateExercise(int id, [FromBody] Exercise model)
     {
       _db.Exercise.UpdateExercise(id, model);
@@ -43,7 +43,7 @@ namespace BodyJournal.Controllers
       return Ok();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("exercises/{id}")]
     public IActionResult DeleteExercise(int id)
     {
       _db.Exercise.DeleteExercise(id);
@@ -52,24 +52,24 @@ namespace BodyJournal.Controllers
     }
     #endregion
 
-    #region Workout
-    [HttpGet]
+    #region Workouts
+    [HttpGet("workouts/{id}")]
     public IActionResult GetWorkout(int Id)
     {
       return Ok(_db.Workout.GetWorkout(Id));
     }
-    [HttpGet]
+    [HttpGet("workouts")]
     public IActionResult GetWorkouts()
     {
       return Ok(_db.Workout.GetWorkouts());
     }
-    [HttpPost]
+    [HttpPost("workouts")]
     public void CreateWorkout([FromForm] Workout model)
     {
       _db.Workout.CreateWorkout(model);
       _db.Save();
     }
-    [HttpPut]
+    [HttpPut("workouts/{id}")]
     public IActionResult UpdateWorkout(int id, [FromBody] Workout model)
     {
       _db.Workout.UpdateWorkout(id, model);
@@ -77,7 +77,7 @@ namespace BodyJournal.Controllers
       return Ok();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("workouts/{id}")]
     public IActionResult DeleteWorkout(int id)
     {
       _db.Workout.DeleteWorkout(id);
@@ -87,23 +87,24 @@ namespace BodyJournal.Controllers
     #endregion
 
     #region Biometric
-    [HttpGet]
+
+    [HttpGet("biometrics/{id}")]
     public IActionResult GetBiometric(int Id)
     {
       return Ok(_db.Biometric.GetBiometric(Id));
     }
-    [HttpGet]
+    [HttpGet("biometrics/{id}")]
     public IActionResult GetBiometrics()
     {
       return Ok(_db.Biometric.GetBiometrics());
     }
-    [HttpPost]
+    [HttpPost("biometrics/{id}")]
     public void CreateBiometric([FromForm] Biometric model)
     {
       _db.Biometric.CreateBiometric(model);
       _db.Save();
     }
-    [HttpPut]
+    [HttpPut("biometrics/{id}")]
     public IActionResult UpdateBiometric(int id, [FromBody] Biometric model)
     {
       _db.Biometric.UpdateBiometric(id, model);
@@ -111,7 +112,7 @@ namespace BodyJournal.Controllers
       return Ok();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("biometrics/{id}")]
     public IActionResult DeleteBiometric(int id)
     {
       _db.Biometric.DeleteBiometric(id);
@@ -121,23 +122,23 @@ namespace BodyJournal.Controllers
     #endregion
 
     #region MuscleGroupFatigue
-    [HttpGet]
+    [HttpGet("muscle/status/{id}")]
     public IActionResult GetMuscleGroupFatigue(int Id)
     {
       return Ok(_db.MuscleGroupFatigue.GetMuscleGroupFatigue(Id));
     }
-    [HttpGet]
+    [HttpGet("muscle/status")]
     public IActionResult GetMuscleGroupFatigues()
     {
       return Ok(_db.MuscleGroupFatigue.GetMuscleGroupFatigues());
     }
-    [HttpPost]
+    [HttpPost("muscle/status")]
     public void CreateMuscleGroupFatigue([FromForm] MuscleGroupFatigue model)
     {
       _db.MuscleGroupFatigue.CreateMuscleGroupFatigue(model);
       _db.Save();
     }
-    [HttpPut]
+    [HttpPut("muscle/status/{id}")]
     public IActionResult UpdateMuscleGroupFatigue(int id, [FromBody] MuscleGroupFatigue model)
     {
       _db.MuscleGroupFatigue.UpdateMuscleGroupFatigue(id, model);
@@ -145,7 +146,7 @@ namespace BodyJournal.Controllers
       return Ok();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("muscle/status/{id}")]
     public IActionResult DeleteMuscleGroupFatigue(int id)
     {
       _db.MuscleGroupFatigue.DeleteMuscleGroupFatigue(id);
@@ -153,6 +154,5 @@ namespace BodyJournal.Controllers
       return Ok();
     }
     #endregion
-
   }
 }
