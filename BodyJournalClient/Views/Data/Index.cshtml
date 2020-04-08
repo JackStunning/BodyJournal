@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <title>W3.CSS Template</title>
@@ -31,16 +33,17 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+        
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
+          ['Day', 'Shoulder Fatigue'],
+          ['2/24',  4],
+          ['2/25',  3],
+          ['2/26',  2],
+          ['2/27',  1]
         ]);
 
         var options = {
-          title: 'Company Performance',
+          title: 'Shoulder Fatigue by Day',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
