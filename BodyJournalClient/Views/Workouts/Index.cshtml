@@ -2,12 +2,6 @@
 @model IEnumerable<BodyJournalClient.Models.Workout>
 
 <div class="text-center">
-    @* <p>Input: Queryable list of Workouts</p> *@
-	@* <label for="WorkoutName">Search bar</label>
-    <input name="WorkoutName" type="text" value="@(Model.Name)"> *@
-
-    @* <p>List: Workouts with their Exercises, Exercises are links to Exercise Details.
-    List also has Delete button</p> *@
 
 @if(Model.Any())
   {

@@ -1,12 +1,212 @@
-<div class="text-center">
-    <h1 class="display-4">Data Index</h1>
-    <p>Graph: Dates and Time of Workouts entered</p>
-    <p>Graph: Workouts Intensity</p>
-    <p>Graph: Exercises per Workout</p>
-    <p>Graph: Muscle Fatigue Overall</p>
-    <p>Graph: Muscle Fatigue specific muscle groups</p>
-    <p>Links: Home, Exercises, Workouts</p>
-    <a href="/Home/Index"><p>Home</p></a>
-    <a href="/Workouts/Index"><p>View Workouts</p></a>
-    <a href="/Exercises/Index"><p>View Exercises</p></a>
-</div>
+<!DOCTYPE html>
+<html>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Raleway"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "Raleway", sans-serif;
+    }
+  </style>
+   <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body class="w3-light-grey">
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+      <!-- Header -->
+      <header class="w3-container" style="padding-top: 22px;">
+        <h5>
+          <b><i class="fa fa-dashboard"></i> Muscle Groups</b>
+        </h5>
+      </header>
+
+      <div class="w3-row-padding w3-margin-bottom">
+        <div class="w3-quarter">
+          <div class="w3-container w3-red w3-padding-16">
+            <div class="w3-left"><i class="w3-xxxlarge"></i></div>
+            <h4>Chest</h4>
+            <p>Days last worked on</p>
+            <h3>0</h3>
+            <div class="w3-clear"></div>
+          </div>
+        </div>
+        <div class="w3-quarter">
+          <div class="w3-container w3-blue w3-padding-16">
+            <div class="w3-left"><i class="w3-xxxlarge"></i></div>
+            <h4>Back</h4>
+            <p>Days last worked on</p>
+            <h3>0</h3>
+            <div class="w3-clear"></div>
+          </div>
+        </div>
+        <div class="w3-quarter">
+          <div class="w3-container w3-teal w3-padding-16">
+            <div class="w3-left"><i class="w3-xxxlarge"></i></div>
+            <h4>Abs</h4>
+            <p>Days last worked on</p>
+            <h3>0</h3>
+            <div class="w3-clear"></div>
+          </div>
+        </div>
+        <div class="w3-quarter">
+          <div class="w3-container w3-orange w3-text-white w3-padding-16">
+            <div class="w3-left"><i class="w3-xxxlarge"></i></div>
+            <h4>Legs</h4>
+            <p>Days last worked on</p>
+            <h3>0</h3>
+            <div class="w3-clear"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-panel">
+        <div class="w3-row-padding" style="margin: 0 -16px;">
+          <div class="w3-third">
+            <h5>Muscle groups graph</h5>
+            <img
+              src="/w3images/region.jpg"
+              style="width: 100%;"
+              alt="Google Regional Map"
+            />
+          </div>
+          <div class="w3-twothird">
+            <h5>Workouts</h5>
+            <table class="w3-table w3-striped w3-white">
+              <tr>
+                <td><i class="w3-text-red w3-large">Chest</i></td>
+                <td>Bench Press.</td>
+                <td><i>2:45PM, 4/7/2020</i></td>
+              </tr>
+              <tr>
+                <td><i class="w3-text-blue w3-large">Back</i></td>
+                <td>Barbell Deadlift.</td>
+                <td><i>2:45PM, 4/7/2020</i></td>
+              </tr>
+              <tr>
+                <td><i class="w3-text-green w3-large">Abs</i></td>
+                <td>Sit Ups.</td>
+                <td><i>2:45PM, 4/7/2020</i></td>
+              </tr>
+              <tr>
+                <td><i class="w3-text-orange w3-large">Legs</i></td>
+                <td>Squats.</td>
+                <td><i>2:45PM, 4/7/2020</i></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="w3-container">
+        <h5>General Graphs</h5>
+        <p>Muscle Fatigue vs Time Graph</p>
+        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+        <div class="w3-grey">
+          <div
+            class="w3-container w3-center w3-padding w3-green"
+            style="width: 25%;"
+          >
+            +25%
+          </div>
+        </div>
+
+        <p>Average Intensity per Workout Graph</p>
+        <div class="w3-grey">
+          <div
+            class="w3-container w3-center w3-padding w3-orange"
+            style="width: 50%;"
+          >
+            50%
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="w3-container">
+        <h5>General Stats</h5>
+        <p>Total Workouts</p>
+        <div class="w3-grey">
+          <div class="w3-container w3-padding">9,000+</div>
+        </div>
+
+        <p>Total Exercises</p>
+        <div class="w3-grey">
+          <div class="w3-container w3-padding">100,000</div>
+        </div>
+
+        <p>Total Weight</p>
+        <div class="w3-grey">
+          <div class="w3-container w3-padding">50,000,000 lbs</div>
+        </div>
+      </div>
+      <hr />
+
+      <!-- End page content -->
+    </div>
+
+    <script>
+      // Get the Sidebar
+      var mySidebar = document.getElementById("mySidebar");
+
+      // Get the DIV with overlay effect
+      var overlayBg = document.getElementById("myOverlay");
+
+      // Toggle between showing and hiding the sidebar, and add overlay effect
+      function w3_open() {
+        if (mySidebar.style.display === "block") {
+          mySidebar.style.display = "none";
+          overlayBg.style.display = "none";
+        } else {
+          mySidebar.style.display = "block";
+          overlayBg.style.display = "block";
+        }
+      }
+
+      // Close the sidebar with the close button
+      function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

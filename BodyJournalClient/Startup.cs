@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity;
+using BodyJournalClient.Models;
 
 namespace BodyJournalClient
 {
@@ -17,6 +19,7 @@ namespace BodyJournalClient
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllersWithViews();
+      // services.AddIdentity<ApplicationUser, IdentityRole>();
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {

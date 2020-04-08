@@ -9,6 +9,7 @@ namespace BodyJournalClient.Controllers
 {
   public class ExercisesController : Controller
   {
+    [Route("exercises")]
     public IActionResult Index()
     {
       var allExercises = Exercise.GetAllExercises();
@@ -21,13 +22,13 @@ namespace BodyJournalClient.Controllers
       Exercise.CreateExercise(exercise);
       return RedirectToAction("Index");
     }
-
+    [Route("exercises/{id}")]
     public IActionResult Details(int id)
     {
       var thisExercise = Exercise.GetExercise(id);
       return View(thisExercise);
     }
-
+    [Route("exercises/{id}/edit")]
     public IActionResult Edit(int id)
     {
       var editExercise = Exercise.GetExercise(id);
@@ -35,7 +36,7 @@ namespace BodyJournalClient.Controllers
     }
 
 
-    [HttpPost]
+    [HttpPost, Route("exercises/{id}")]
     public IActionResult Details(int id, Exercise exercise)
     {
       exercise.Id = id;
