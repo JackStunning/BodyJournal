@@ -29,31 +29,63 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
     <script type="text/javascript">
+      let averageExerciseIntensity;
+      let dataPoint;
+      let dataPoint2;
+      let testdataPoint = 4;
+
+        async function makeApiCall() {
+        let intensityCount = 0;
+        let responseExercise = await fetch("http://localhost:4000/api/bodyjournal/exercises");
+        let jsonifiedResponseExercise= await responseExercise.json();
+        let intensityScore = jsonifiedResponseExercise[0].intensity;
+        for (let i=0; i < jsonifiedResponseExercise.length; i++)
+        {
+          intensityCount += jsonifiedResponseExercise[i].intensity;
+        }
+        averageExerciseIntensity = intensityCount/jsonifiedResponseExercise.length -1;
+        dataPoint2 = intensityCount;
+        alert(intensityScore);
+        dataPoint = intensityScore;
+        }
+
+        async function Load(){
+          makeApiCall();
+          GoogleLoad();
+        }
+
+      async function GoogleLoad() { 
       google.charts.load('current', {'packages':['corechart']});
+
       google.charts.setOnLoadCallback(drawChart);
+      }
+
+      Load();
 
       function drawChart() {
-        
+
         var data = google.visualization.arrayToDataTable([
-          ['Day', 'Shoulder Fatigue'],
-          ['2/24',  4],
-          ['2/25',  3],
-          ['2/26',  2],
-          ['2/27',  1]
+          ['Day', 'Exercise Intensity'],
+          ['3/24',  dataPoint],
+          ['3/25',  4],
+          ['3/26',  5],
+          ['3/27',  averageExerciseIntensity],
+          ['3/28',  2],
+          ['3/29',  1],
+          ['3/30',  0],
         ]);
 
         var options = {
-          title: 'Shoulder Fatigue by Day',
+          title: 'Exercise Intensity by Day',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
-
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
         chart.draw(data, options);
       }
     </script>
   </head>
+
   <body class="w3-light-grey">
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
@@ -154,7 +186,7 @@
           </div>
         </div>
 
-        <p>Average Intensity per Workout Graph</p>
+        <p>Average Intensity per Exercise Graph</p>
         <div class="w3-grey">
           <div
             class="w3-container w3-center w3-padding w3-orange"
@@ -169,7 +201,7 @@
         <h5>General Stats</h5>
         <p>Total Workouts</p>
         <div class="w3-grey">
-          <div class="w3-container w3-padding">9,000+</div>
+          <div class="w3-container w3-padding">'${IntensityScore}'</div>
         </div>
 
         <p>Total Exercises</p>

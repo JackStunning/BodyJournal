@@ -130,11 +130,11 @@ namespace BodyJournalAPI.Helpers
 
       #region MuscleGroupFatigue
       builder.Entity<MuscleGroupFatigue>().HasData(
-      new MuscleGroupFatigue { Id = 1, MuscleGroup = "Chest", Fatigue = 3, CurrentTime = DateTime.Now, WorkoutId = 6 },
-      new MuscleGroupFatigue { Id = 2, MuscleGroup = "Shoulders", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 3 },
-      new MuscleGroupFatigue { Id = 3, MuscleGroup = "Back", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 4 },
-      new MuscleGroupFatigue { Id = 4, MuscleGroup = "Legs", Fatigue = 5, CurrentTime = DateTime.Now, WorkoutId = 8 },
-      new MuscleGroupFatigue { Id = 5, MuscleGroup = "Abs", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 5 }
+      new MuscleGroupFatigue { Id = 1, BackFatigue = 2, ChestFatigue = 4, LegsFatigue = 1, ArmsFatigue = 1, ShouldersFatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 6 },
+      new MuscleGroupFatigue { Id = 2, BackFatigue = 1, ChestFatigue = 1, LegsFatigue = 1, ArmsFatigue = 1, ShouldersFatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 3 },
+      new MuscleGroupFatigue { Id = 3, BackFatigue = 3, ChestFatigue = 4, LegsFatigue = 3, ArmsFatigue = 3, ShouldersFatigue = 3, CurrentTime = DateTime.Now, WorkoutId = 4 },
+      new MuscleGroupFatigue { Id = 4, BackFatigue = 1, ChestFatigue = 1, LegsFatigue = 2, ArmsFatigue = 3, ShouldersFatigue = 3, CurrentTime = DateTime.Now, WorkoutId = 8 },
+      new MuscleGroupFatigue { Id = 5, BackFatigue = 5, ChestFatigue = 3, LegsFatigue = 3, ArmsFatigue = 3, ShouldersFatigue = 5, CurrentTime = DateTime.Now, WorkoutId = 5 }
       // new MuscleGroupFatigue { Id = 6, MuscleGroup = "Chest", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 1 },
       // new MuscleGroupFatigue { Id = 5, MuscleGroup = "Abs", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 5 }
       // new MuscleGroupFatigue { Id = 6, MuscleGroup = "Chest", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 1 },

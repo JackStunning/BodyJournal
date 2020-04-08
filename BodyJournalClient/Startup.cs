@@ -32,13 +32,13 @@ namespace BodyJournalClient
         app.UseExceptionHandler("/Home/Error");
         app.UseHsts();
       }
+      app.UseDefaultFiles(); // Added for Javascript Functionality
       // app.UseHttpsRedirection();
       app.UseStaticFiles();
 
       app.UseRouting();
 
       // app.UseAuthorization();
-
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
