@@ -58,6 +58,12 @@ html {
   font-size: 14px;
 }
 
+/* Center Home */
+#centerHome {
+  margin-left: 33%;
+  padding-bottom: 5%;
+}
+
 /* Muscle Group Map */
 
 .muscle-groups {
@@ -70,6 +76,7 @@ html {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .5);
   overflow: hidden;
   border-top: 0.75rem solid #00bcd4;
+  margin-left: 2%;
 }
 .muscle-groups h1 {
   margin: -0.5rem -0.5rem 1rem;
