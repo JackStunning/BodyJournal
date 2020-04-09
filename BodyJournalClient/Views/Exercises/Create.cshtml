@@ -6,38 +6,51 @@
 
 <div class="text-center">
     <h1 class="display-4">Exercises Create</h1>
-<form asp-action="Create" method="POST">
+<form asp-controller="Exercise" asp-action="Create" method="post">
 
-    <p>Input: Exercise Name</p>
-    <label for="Name">Exercise Name</label>
-    <input name="Name" type="text" value="@(Model.Name)">    
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input class="form-control" type="text" id="Name" asp-for="Name"/>
+    </div>
 
-    <p>Input: MuscleGroup</p>
-    <label for="MuscleGroup">Muscle Group</label>
-    <input name="MuscleGroup" type="text" value="@(Model.MuscleGroup)"> 
+    <div class="form-group">
+      <label for="Reps">Reps</label>
+      <input class="form-control" type="text" id="Reps" asp-for="Reps" required/>
+    </div>
 
-    <p>Input: Reps</p>
-    <label for="Reps">Reps</label>
-    <input name="Reps" type="text" value="@(Model.Reps)">    
+     <div class="form-group">
+      <label for="Sets">Sets</label>
+      <input class="form-control" type="text" id="Sets" asp-for="Sets" required/>
+    </div>
 
-    <p>Input: Sets</p>
-    <label for="Sets">Sets</label>
-    <input name="Sets" type="text" value="@(Model.Sets)">   
+    <div class="form-group">
+      <label for="Weight">Weight</label>
+      <input class="form-control" type="text" id="Weight" asp-for="Weight"/>
+    </div>
 
-    <p>Input: Intensity</p>
-    <label for="Intensity">Intensity</label>
-    <input name="Intensity" type="text" value="@(Model.Intensity)">   
+     <div class="form-group">
+      <label for="Weight">Weight</label>
+      <input class="form-control" type="text" id="Weight" asp-for="Weight"/>
+    </div>
 
-    <p>Input: Weight</p>
-    <label for="Weight">Weight* (optional)</label>
-    <input name="Weight" type="text" value="@(Model.Weight)">   
-    
-    <input  type="submit" value="Create"> 
+    <div class="form-group">
+      <label for="MuscleGroup">MuscleGroup</label>
+      <input class="form-control" type="text" id="MuscleGroup" asp-for="MuscleGroup" required/>
+    </div>
 
-    @* @Html.Label("Select Exercise to Add to Workout")
-    @Html.DropDownList("ExerciseId")<br> *@
+    <div class="form-group">
+      <label for="Intensity">Intensity</label>
+      <input class="form-control" type="text" id="Intensity" asp-for="Intensity" required/>
+    </div>
+    <input type="submit" value="Create Exercise" class="btn btn-default" />
+    @* <div class="form-group">
 
-</form>
+      <input type="hidden" asp-for="UserName" value="@User.Identity.Name"/>
+    <div class="form-group">
+      <input type="submit" value="Post your photo" class="btn btn-default" />
+      <small class="form-text text-muted"><a asp-action="Index">Cancel</a></small>
+    </div> *@
+  </form>
 
     <div class="links">
         <a href="/exercises"><p>View Exercises</p></a>

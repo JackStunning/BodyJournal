@@ -7,23 +7,20 @@
   {
       @foreach (Workout workout in Model)
       {
-        <div class="exercise">
-            <a href="exercises/@(workout.Id)">
+        <div class="workout">
+            <a href="workouts/@(workout.Id)">
                 <span>@workout.Name</span>
                 <span>@workout.IntensityScore</span>
             </a>
         </div>
     }
   }
-
   else
   {
     <h3>You dont have any exercises yet</h3>
   }
-@* 
 
-    @* <p>Links: Home, Data, Exercises, Add new Workouts</p> *@
-    <a href="/Home/Index"><p>Home</p></a>
-    <a href="/Data/Index"><p>View Data</p></a>
-    <a href="/Exercises/Index"><p>View Exercises</p></a>
+  <div class="links">
+    <a href="/workouts/create"><p>Create Workout</p></a>
+</div>
 </div>
