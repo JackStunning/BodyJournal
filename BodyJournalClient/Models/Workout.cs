@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using BodyJournalClient.Helpers;
+using System;
 
 namespace BodyJournalClient.Models
 {
@@ -9,8 +10,12 @@ namespace BodyJournalClient.Models
   {
     public int Id { get; set; }
     public string Name { get; set; }
+    public DateTime TimeOfWorkout { get; set; }
+    // Keeps Track of the Time of Workout
     public int Satisfaction { get; set; }
+    // User inputed Satisfaction score out of 5
     public int IntensityScore { get; set; }
+
     public IEnumerable<Exercise> Exercises { get; set; }
     public static List<Workout> GetAllWorkouts()
     {

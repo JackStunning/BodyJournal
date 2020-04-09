@@ -2,19 +2,25 @@
   Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Account Index - Login Page</h1>
+@using System.Security.Claims
 
-    @* <p>Input: Account Name</p> *@
-	<label for="AccountName">Enter Account Name</label>
-    <input name="AccountName" type="text" value="@(Model.AccountName)">    
-
-    @* <p>Input: Account Password</p> *@
-    <label for="AccountPassword">Enter Password</label>
-    <input name="AccountPassword" type="text" value="@(Model.AccountPassword)">   
-
-    <p>Button: Login, validation check and then enter into Home/Index</p>
-
-    @* <p>Link: Register now</p> *@
-    <a href="/accounts/Create"><p>Register now</p></a>
-</div>
+<h1>Authentication with Identity</h1>
+    
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="content">
+        <p>Hello @User.Identity.Name!</p>
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+            <input type="submit" class="btn btn" value="Log out" />
+        }
+    </div>
+}
+else
+{
+    <div class="links">
+        <p>@Html.ActionLink("Register", "Register")</p>
+        <p>@Html.ActionLink("Log in", "Login")</p>
+        <p>@Html.ActionLink("Home", "Index", "Home")</p>
+    </div>
+}

@@ -134,21 +134,21 @@ namespace BodyJournalClient.Helpers
     public static async Task<string> GetAllMuscleGroupFatigues()
     {
       RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/muscle/status", Method.GET);
+      RestRequest request = new RestRequest($"bodyjournal/musclefatigue", Method.GET);
       var response = await client.ExecuteAsync(request);
       return response.Content;
     }
     public static async Task<string> GetMuscleGroupFatigue(int id)
     {
       RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/muscle/status/{id}", Method.GET);
+      RestRequest request = new RestRequest($"bodyjournal/musclefatigue/{id}", Method.GET);
       var response = await client.ExecuteAsync(request);
       return response.Content;
     }
     public static async Task CreateMuscleGroupFatigue(string model)
     {
       RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/muscle/status", Method.POST);
+      RestRequest request = new RestRequest($"bodyjournal/musclefatigue", Method.POST);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(model);
       var response = await client.ExecuteAsync(request);
@@ -156,7 +156,7 @@ namespace BodyJournalClient.Helpers
     public static async Task PutMuscleGroupFatigue(int id, string model)
     {
       RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/muscle/status/{id}", Method.PUT);
+      RestRequest request = new RestRequest($"bodyjournal/musclefatigue/{id}", Method.PUT);
 
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(model);
@@ -165,7 +165,7 @@ namespace BodyJournalClient.Helpers
     public static async Task DeleteMuscleGroupFatigue(int id)
     {
       RestClient client = new RestClient("http://localhost:4000/api");
-      RestRequest request = new RestRequest($"bodyjournal/muscle/status/{id}", Method.DELETE);
+      RestRequest request = new RestRequest($"bodyjournal/musclefatigue/{id}", Method.DELETE);
       request.AddHeader("Content-Type", "application/json");
       var response = await client.ExecuteAsync(request);
     }

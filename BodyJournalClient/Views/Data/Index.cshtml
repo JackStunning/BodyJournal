@@ -29,34 +29,44 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
     <script type="text/javascript">
+  
+      
       let averageExerciseIntensity;
       let dataPoint;
       let dataPoint2;
-      let testdataPoint = 4;
+      let dataPoint3;
+      let dataPoint4;
+      let dataPoint5;
+      let dataPoint6;
+      let dataPoint7;
 
         async function makeApiCall() {
         let intensityCount = 0;
         let responseExercise = await fetch("http://localhost:4000/api/bodyjournal/exercises");
         let jsonifiedResponseExercise= await responseExercise.json();
-        let intensityScore = jsonifiedResponseExercise[0].intensity;
+        dataPoint = jsonifiedResponseExercise[0].intensity;
+        dataPoint2 = jsonifiedResponseExercise[1].intensity;
+        dataPoint3 = jsonifiedResponseExercise[2].intensity;
+        dataPoint4 = jsonifiedResponseExercise[3].intensity;
+        dataPoint5 = jsonifiedResponseExercise[4].intensity;
+        dataPoint6 = jsonifiedResponseExercise[5].intensity;
+        dataPoint7 = jsonifiedResponseExercise[6].intensity;
+
+
         for (let i=0; i < jsonifiedResponseExercise.length; i++)
         {
           intensityCount += jsonifiedResponseExercise[i].intensity;
         }
+
         averageExerciseIntensity = intensityCount/jsonifiedResponseExercise.length -1;
-        dataPoint2 = intensityCount;
-        alert(intensityScore);
-        dataPoint = intensityScore;
         }
 
         async function Load(){
           makeApiCall();
           GoogleLoad();
         }
-
       async function GoogleLoad() { 
       google.charts.load('current', {'packages':['corechart']});
-
       google.charts.setOnLoadCallback(drawChart);
       }
 
@@ -67,12 +77,12 @@
         var data = google.visualization.arrayToDataTable([
           ['Day', 'Exercise Intensity'],
           ['3/24',  dataPoint],
-          ['3/25',  4],
-          ['3/26',  5],
-          ['3/27',  averageExerciseIntensity],
-          ['3/28',  2],
-          ['3/29',  1],
-          ['3/30',  0],
+          ['3/25',  dataPoint2],
+          ['3/26',  dataPoint3],
+          ['3/27',  dataPoint4],
+          ['3/28',  dataPoint5],
+          ['3/29',  dataPoint6],
+          ['3/30',  dataPoint7],
         ]);
 
         var options = {
@@ -99,12 +109,13 @@
       <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-quarter">
           <div class="w3-container w3-red w3-padding-16">
-            <div class="w3-left"><i class="w3-xxxlarge"></i></div>
+            <div class="w3-left"><div id="Chest"><i class="w3-xxxlarge"></i></div></div>
             <h4>Chest</h4>
             <p>Days last worked on</p>
             <h3>0</h3>
             <div class="w3-clear"></div>
           </div>
+
         </div>
         <div class="w3-quarter">
           <div class="w3-container w3-blue w3-padding-16">
@@ -201,7 +212,7 @@
         <h5>General Stats</h5>
         <p>Total Workouts</p>
         <div class="w3-grey">
-          <div class="w3-container w3-padding">'${IntensityScore}'</div>
+          <div class="w3-container w3-padding"> "${text}"" </div>
         </div>
 
         <p>Total Exercises</p>

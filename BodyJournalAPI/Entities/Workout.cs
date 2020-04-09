@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace BodyJournalAPI.Entities
 {
@@ -18,6 +19,8 @@ namespace BodyJournalAPI.Entities
     public int Satisfaction { get; set; }
     // User inputed Satisfaction score out of 5
     public int IntensityScore { get; set; }
+
+    public IEnumerable<Exercise> Exercises { get; set; }
     // Adds Score from all Exercises in Workout and returns that score divided by number of exercises
     // public virtual ICollection<Exercise> Exercises { get; set; }
     // Collection of Exercises that comprises this Workout

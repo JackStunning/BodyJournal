@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace api.Migrations
+namespace BodyJournalApi.Migrations
 {
     [DbContext(typeof(BodyJournalContext))]
-    [Migration("20200408234205_Secondary")]
-    partial class Secondary
+    [Migration("20200409175300_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,12 @@ namespace api.Migrations
                     b.Property<int?>("Weight")
                         .HasColumnType("int");
 
+                    b.Property<int?>("WorkoutId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("WorkoutId");
 
                     b.ToTable("Exercises");
 
@@ -451,7 +456,7 @@ namespace api.Migrations
                             ArmsFatigue = 1,
                             BackFatigue = 2,
                             ChestFatigue = 4,
-                            CurrentTime = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(8370),
+                            CurrentTime = new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(472),
                             LegsFatigue = 1,
                             ShouldersFatigue = 1,
                             WorkoutId = 6
@@ -463,7 +468,7 @@ namespace api.Migrations
                             ArmsFatigue = 1,
                             BackFatigue = 1,
                             ChestFatigue = 1,
-                            CurrentTime = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(9430),
+                            CurrentTime = new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1209),
                             LegsFatigue = 1,
                             ShouldersFatigue = 4,
                             WorkoutId = 3
@@ -475,7 +480,7 @@ namespace api.Migrations
                             ArmsFatigue = 3,
                             BackFatigue = 3,
                             ChestFatigue = 4,
-                            CurrentTime = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(9460),
+                            CurrentTime = new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1233),
                             LegsFatigue = 3,
                             ShouldersFatigue = 3,
                             WorkoutId = 4
@@ -487,7 +492,7 @@ namespace api.Migrations
                             ArmsFatigue = 3,
                             BackFatigue = 1,
                             ChestFatigue = 1,
-                            CurrentTime = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(9460),
+                            CurrentTime = new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1236),
                             LegsFatigue = 2,
                             ShouldersFatigue = 3,
                             WorkoutId = 8
@@ -499,7 +504,7 @@ namespace api.Migrations
                             ArmsFatigue = 3,
                             BackFatigue = 5,
                             ChestFatigue = 3,
-                            CurrentTime = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(9470),
+                            CurrentTime = new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1240),
                             LegsFatigue = 3,
                             ShouldersFatigue = 5,
                             WorkoutId = 5
@@ -535,7 +540,7 @@ namespace api.Migrations
                             IntensityScore = 7,
                             Name = "Upper body day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 912, DateTimeKind.Local).AddTicks(7940)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 345, DateTimeKind.Local).AddTicks(9842)
                         },
                         new
                         {
@@ -543,7 +548,7 @@ namespace api.Migrations
                             IntensityScore = 3,
                             Name = "Lower body day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(1040)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6114)
                         },
                         new
                         {
@@ -551,7 +556,7 @@ namespace api.Migrations
                             IntensityScore = 7,
                             Name = "Shoulder day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(1110)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6162)
                         },
                         new
                         {
@@ -559,7 +564,7 @@ namespace api.Migrations
                             IntensityScore = 6,
                             Name = "Back day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(1110)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6167)
                         },
                         new
                         {
@@ -567,7 +572,7 @@ namespace api.Migrations
                             IntensityScore = 4,
                             Name = "Abs day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(1120)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6170)
                         },
                         new
                         {
@@ -575,7 +580,7 @@ namespace api.Migrations
                             IntensityScore = 8,
                             Name = "Chest day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(1120)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6173)
                         },
                         new
                         {
@@ -583,7 +588,7 @@ namespace api.Migrations
                             IntensityScore = 8,
                             Name = "Arms day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(1120)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6175)
                         },
                         new
                         {
@@ -591,8 +596,15 @@ namespace api.Migrations
                             IntensityScore = 6,
                             Name = "Legs day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 8, 16, 42, 4, 931, DateTimeKind.Local).AddTicks(1130)
+                            TimeOfWorkout = new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6178)
                         });
+                });
+
+            modelBuilder.Entity("BodyJournalAPI.Entities.Exercise", b =>
+                {
+                    b.HasOne("BodyJournalAPI.Entities.Workout", null)
+                        .WithMany("Exercises")
+                        .HasForeignKey("WorkoutId");
                 });
 #pragma warning restore 612, 618
         }

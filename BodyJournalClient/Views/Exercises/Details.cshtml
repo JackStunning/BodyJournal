@@ -2,21 +2,20 @@
   Layout = "_Layout";
 }
 
-@model BodyJournalClient.Models.Exercise
+@model BodyJournalClient.ViewModels.ViewExercise
+
 
 <div class="text-center">
     <h1 class="display-4">Exercise Details</h1>
         
     @* <p>List: Exercise with their Sets, Reps,</p> *@
-        <p>Intensity</p>
-        <p>Weight* (optional)</p>
-        <p>Sets</p>
-        <p>Reps</p>
+        <div class="exercise">
+          <span>@Model.Name</span>
+          <span>@Model.IntensityScore</span>
+          <span>@Model.Satisfaction</span>
+        </div>
 
-    @* <p>Links: Data, Exercises, Add new Exercises</p> *@
-    <a href="/Exercises/Create"><p>Add new Exercise</p></a>
-    <a href="/Home/Index"><p>Home</p></a>
-    <a href="/Data/Index"><p>Data</p></a>
-    <a href="/Workouts/Index"><p>View Workouts</p></a>
-
+  <div class="links">
+    <a href="/exercises"><p>Exercises</p></a>
+  </div>
 </div>

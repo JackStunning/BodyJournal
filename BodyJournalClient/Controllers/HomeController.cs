@@ -16,6 +16,7 @@ namespace BodyJournalClient.Controllers
     {
       return View();
     }
+<<<<<<< HEAD
 
     public IActionResult Privacy()
     {
@@ -27,5 +28,7 @@ namespace BodyJournalClient.Controllers
     // {
     //   return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     // }
+=======
+>>>>>>> 7f674dbeacdba8ab637d97385f8ed116854197d2
   }
 }

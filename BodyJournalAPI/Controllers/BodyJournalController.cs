@@ -32,8 +32,8 @@ namespace BodyJournalAPI.Controllers
     public IActionResult GetExercises()
     {
       var model = _db.Exercise.GetExercises();
-      var result = _mapper.Map<IEnumerable<ViewExercise>>(model);
-      return Ok(result);
+      // var result = _mapper.Map<IEnumerable<ViewExercise>>(model);
+      return Ok(model);
     }
     [HttpPost("exercises")]
     public void CreateExercise([FromForm] Exercise model)
@@ -64,16 +64,16 @@ namespace BodyJournalAPI.Controllers
     public IActionResult GetWorkout(int id)
     {
       var model = _db.Workout.GetWorkout(id);
-      var result = _mapper.Map<ViewWorkout>(model);
-      return Ok(result);
+      // var result = _mapper.Map<ViewWorkout>(model);
+      return Ok(model);
     }
 
     [HttpGet("workouts")]
     public IActionResult GetWorkouts()
     {
       var model = _db.Workout.GetWorkouts();
-      var result = _mapper.Map<IEnumerable<ViewWorkout>>(model);
-      return Ok(result);
+      // var result = _mapper.Map<IEnumerable<ViewWorkout>>(model);
+      return Ok(model);
     }
     [HttpPost("workouts")]
     public void CreateWorkout([FromForm] Workout model)
@@ -134,23 +134,23 @@ namespace BodyJournalAPI.Controllers
     #endregion
 
     #region MuscleGroupFatigue
-    [HttpGet("muscle/status/{id}")]
+    [HttpGet("musclefatigue/{id}")]
     public IActionResult GetMuscleGroupFatigue(int Id)
     {
       return Ok(_db.MuscleGroupFatigue.GetMuscleGroupFatigue(Id));
     }
-    [HttpGet("muscle/status")]
+    [HttpGet("musclefatigue")]
     public IActionResult GetMuscleGroupFatigues()
     {
       return Ok(_db.MuscleGroupFatigue.GetMuscleGroupFatigues());
     }
-    [HttpPost("muscle/status")]
+    [HttpPost("musclefatigue")]
     public void CreateMuscleGroupFatigue([FromForm] MuscleGroupFatigue model)
     {
       _db.MuscleGroupFatigue.CreateMuscleGroupFatigue(model);
       _db.Save();
     }
-    [HttpPut("muscle/status/{id}")]
+    [HttpPut("musclefatigue/{id}")]
     public IActionResult UpdateMuscleGroupFatigue(int id, [FromBody] MuscleGroupFatigue model)
     {
       _db.MuscleGroupFatigue.UpdateMuscleGroupFatigue(id, model);
@@ -158,7 +158,7 @@ namespace BodyJournalAPI.Controllers
       return Ok();
     }
 
-    [HttpDelete("muscle/status/{id}")]
+    [HttpDelete("musclefatigue/{id}")]
     public IActionResult DeleteMuscleGroupFatigue(int id)
     {
       _db.MuscleGroupFatigue.DeleteMuscleGroupFatigue(id);

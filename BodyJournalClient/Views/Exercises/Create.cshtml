@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model BodyJournalClient.Models.Exercise;
+@model BodyJournalClient.ViewModels.CreateExercise;
 
 <div class="text-center">
     <h1 class="display-4">Exercises Create</h1>
@@ -32,7 +32,7 @@
     <label for="Weight">Weight* (optional)</label>
     <input name="Weight" type="text" value="@(Model.Weight)">   
     
-    <input  type="submit" value="Delete"> 
+    <input  type="submit" value="Create"> 
 
     @* @Html.Label("Select Exercise to Add to Workout")
     @Html.DropDownList("ExerciseId")<br> *@
@@ -40,8 +40,6 @@
 </form>
 
     <div class="links">
-        <a href="/Home/Index"><p>Home</p></a>
-        <a href="/Data/Index"><p>View Data</p></a>
-        <a href="/Workouts/Index"><p>View Workouts</p></a>
+        <a href="/exercises"><p>Exercises</p></a>
     </div>
 </div>
