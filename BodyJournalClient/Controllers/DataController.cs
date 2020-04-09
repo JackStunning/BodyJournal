@@ -8,7 +8,6 @@ namespace BodyJournalClient.Controllers
     [Route("data")]
     public IActionResult Index()
     {
-      // var allData = Data.GetAllData();
       return View();
     }
 

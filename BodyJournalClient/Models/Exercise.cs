@@ -9,12 +9,25 @@ namespace BodyJournalClient.Models
   {
     public int Id { get; set; }
     public int? Weight { get; set; }
+    // Weight used, should have option to be null or ommitted b/c bodyweight exerices
     public int Reps { get; set; }
+    // Number of Reps of an exercise
     public int Sets { get; set; }
+    //Number of Sets of an exercise
+
     public string Name { get; set; }
+    // Name of Exercises
     public string MuscleGroup { get; set; }
+    // MuscleGroup Colllection of Muscle Groups 
     public int Intensity { get; set; }
-    public static List<string> MuscleGroupList = new List<string> { "Arms", "Abs", "Chest", "Legs", "Shoulders", "Back" };
+    // public int Id { get; set; }
+    // public int? Weight { get; set; }
+    // public int Reps { get; set; }
+    // public int Sets { get; set; }
+    // public string Name { get; set; }
+    // public string MuscleGroup { get; set; }
+    // public int Intensity { get; set; }
+    // public static List<string> MuscleGroupList = new List<string> { "Arms", "Abs", "Chest", "Legs", "Shoulders", "Back" };
     public static List<Exercise> GetAllExercises()
     {
       var apiCallTask = ApiHelper.GetAllExercises();
@@ -25,6 +38,7 @@ namespace BodyJournalClient.Models
 
       return model;
     }
+
 
     public static Exercise GetExercise(int id)
     {

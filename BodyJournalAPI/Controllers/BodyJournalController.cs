@@ -59,15 +59,21 @@ namespace BodyJournalAPI.Controllers
     #endregion
 
     #region Workouts
+
     [HttpGet("workouts/{id}")]
-    public IActionResult GetWorkout(int Id)
+    public IActionResult GetWorkout(int id)
     {
-      return Ok(_db.Workout.GetWorkout(Id));
+      var model = _db.Workout.GetWorkout(id);
+      var result = _mapper.Map<ViewWorkout>(model);
+      return Ok(result);
     }
+
     [HttpGet("workouts")]
     public IActionResult GetWorkouts()
     {
-      return Ok(_db.Workout.GetWorkouts());
+      var model = _db.Workout.GetWorkouts();
+      var result = _mapper.Map<IEnumerable<ViewWorkout>>(model);
+      return Ok(result);
     }
     [HttpPost("workouts")]
     public void CreateWorkout([FromForm] Workout model)
