@@ -16,44 +16,40 @@ namespace BodyJournalClient.Controllers
       return View(allWorkouts);
     }
 
-    [HttpPost]
-    public IActionResult Index(Workout workout)
+    [Route("workouts/create")]
+    public ActionResult Create()
     {
+      List<Exercise> exercises = Exercise.GetAllExercises();
 
+      ViewBag.ExerciseOne = new SelectList(exercises, "Id", "Name");
+      ViewBag.ExerciseTwo = new SelectList(exercises, "Id", "Name");
+      ViewBag.ExerciseThree = new SelectList(exercises, "Id", "Name");
+      ViewBag.ExerciseFour = new SelectList(exercises, "Id", "Name");
+      ViewBag.Exercise = new SelectList(Exercise.GetAllExercises(), "TreatId", "Description");
+      return View();
+    }
+
+    [HttpPost("workouts/create")]
+    public IActionResult Create(Workout workout, List<Exercise> exercises)
+    {
       Workout.CreateWorkout(workout);
-
-      var exercises = Exercise.GetAllExercises();
-
-      List<SelectListItem> exercisesSelectList = new List<SelectListItem>();
-
-      exercisesSelectList.AddRange(exercises.Select(a =>
-      new SelectListItem
-      {
-        Value = a.Id.ToString(),
-        Text = a.Name + " " + a.MuscleGroup + " " + a.Intensity
-      }
-      ).OrderBy(n => n.Text));
-
-      ViewBag.ExerciseId = exercisesSelectList;
-
       return RedirectToAction("Index");
     }
 
-    [Route("exercises/{id}")]
+    [Route("workouts/{id}")]
     public IActionResult Details(int id)
     {
       var thisWorkout = Workout.GetWorkout(id);
       return View(thisWorkout);
     }
-    [Route("exercises/{id}/edit")]
+    [Route("workouts/{id}/edit")]
     public IActionResult Edit(int id)
     {
       var editWorkout = Workout.GetWorkout(id);
       return View(editWorkout);
     }
 
-
-    [HttpPost, Route("exercises/{id}")]
+    [HttpPost, Route("workouts/{id}")]
     public IActionResult Details(int id, Workout workout)
     {
       workout.Id = id;

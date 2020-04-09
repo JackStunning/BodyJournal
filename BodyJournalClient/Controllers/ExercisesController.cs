@@ -16,12 +16,12 @@ namespace BodyJournalClient.Controllers
       return View(allExercises);
     }
 
-    [HttpPost]
-    public IActionResult Index(Exercise exercise)
-    {
-      Exercise.CreateExercise(exercise);
-      return RedirectToAction("Index");
-    }
+    // [HttpPost]
+    // public IActionResult Index(Exercise exercise)
+    // {
+    //   Exercise.CreateExercise(exercise);
+    //   return RedirectToAction("Index");
+    // }
     [Route("exercises/{id}")]
     public IActionResult Details(int id)
     {
@@ -34,7 +34,18 @@ namespace BodyJournalClient.Controllers
       var editExercise = Exercise.GetExercise(id);
       return View(editExercise);
     }
-
+    [Route("exercises/create")]
+    public ActionResult Create()
+    {
+      // ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Description");
+      return View();
+    }
+    [HttpPost]
+    public IActionResult Create(Exercise exercise)
+    {
+      Exercise.CreateExercise(exercise);
+      return RedirectToAction("Index");
+    }
 
     [HttpPost, Route("exercises/{id}")]
     public IActionResult Details(int id, Exercise exercise)

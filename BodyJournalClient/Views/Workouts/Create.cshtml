@@ -1,28 +1,41 @@
 @{
   Layout = "_Layout";
 }
-@model BodyJournalClient.Models.Workout
+@model BodyJournalClient.ViewModels.CreateWorkout
 
 <div class="text-center">
   <h1 class="display-4">Workout Create</h1>
 
-  <form asp-action="Create" method="POST">
+  <form asp-controller="Workouts" asp-action="Create" method="post">
 
-    <label for="Name">Name</label>
-    <input name="Name" type="text" value="@(Model.Name)"> 
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input class="form-control" type="text" id="Name" asp-for="Name"/>
+    </div>
 
-    <label for="Satisfaction"> Saftisfaction </label>
-    <input name="Name" type="int" value="@(Model.Satisfaction)">  
-    <div></div>
+      <label for="ExerciseOne">Exercise one:</label>
+      <select id="ExerciseOne" name="exercises" asp-for="@(Model.Exercises)" asp-items="ViewBag.ExerciseOne"></select> 
+    @* @Html.DropDownListFor(x => x.Exercises., new SelectList(ViewBag.Accounts, "AccountID", "AccountName"))
+    @Html.Label("Exercise One")
+    @Html.DropDownList("ViewBag.ExerciseOne")<br>
 
-    <p>Input: Drop downs you can choose exercises that can be deleted or added</p>
-    @Html.Label("Select Exercise")
-    @Html.DropDownList("ExerciseId")<br>
+     @Html.Label("Exercise Two")
+    @Html.DropDownList("ViewBag.ExerciseTwo")<br>
 
-      @* Button: Creat Workout *@
+     @Html.Label("Exercise Three")
+    @Html.DropDownList("ViewBag.ExerciseThree")<br>
 
-      <input  type="submit" value="Create">
+     @Html.Label("Exercise Four")
+    @Html.DropDownList("ViewBag.ExerciseFour")<br> *@
+    
+     <div class="form-group">
+      <label for="Satisfaction">Satisfaction</label>
+      <input class="form-control" type="text" id="Satisfaction" asp-for="Satisfaction" required/>
+    </div>
+
+    <input type="submit" value="Create Workout" class="btn btn-default" />
   </form>
+
 
   <div class="links">
     <a href="/home">Home</a>
