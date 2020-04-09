@@ -36,72 +36,139 @@ document.querySelectorAll(".muscle-groups svg g g[id]").forEach(function(group) 
   let armToggle = false;
   $("#arms").click(function(event){
     event.preventDefault();
-    if (armToggle === false){
+    if (armToggle === true){
       $(".arms").css("fill", "#555");
-      armToggle = true;
+      armToggle = false;
     } else {
       $(".arms").css("fill", "#FF0002");
-      armToggle = false;
+      armToggle = true;
     }
   });
 
   let shoulderToggle = false;
   $("#shoulders").click(function(event){
     event.preventDefault();
-    if (shoulderToggle === false){
+    if (shoulderToggle === true){
       $(".shoulders").css("fill", "#555");
-      shoulderToggle = true;
+      shoulderToggle = false;
     } else {
       $(".shoulders").css("fill", "#A52A2A");
-      shoulderToggle = false;
+      shoulderToggle = true;
     }
   });
 
   let chestToggle = false;
   $("#chest").click(function(event){
     event.preventDefault();
-    if (chestToggle === false){
+    if (chestToggle === true){
       $(".chest").css("fill", "#555");
-      chestToggle = true;
+      chestToggle = false;
     } else {
       $(".chest").css("fill", "#800080");
-      chestToggle = false;
+      chestToggle = true;
     }
   });
   
   let backToggle = false;
   $("#back").click(function(event){
     event.preventDefault();
-    if (backToggle === false){
+    if (backToggle === true){
       $(".back").css("fill", "#555");
-      backToggle = true;
+      backToggle = false;
     } else {
       $(".back").css("fill", "#0000F0");
-      backToggle = false;
+      backToggle = true;
     }
   });
   
   let coreToggle = false;
   $("#core").click(function(event){
     event.preventDefault();
-    if (coreToggle === false){
+    if (coreToggle === true){
       $(".core").css("fill", "#555");
-      coreToggle = true;
+      coreToggle = false;
     } else {
       $(".core").css("fill", "#228B22");
-      coreToggle = false;
+      coreToggle = true;
     }
   });
   
   let legsToggle = false;
   $("#legs").click(function(event){
     event.preventDefault();
-    if (legsToggle === false){
+    if (legsToggle === true){
       $(".legs").css("fill", "#555");
-      legsToggle = true;
+      legsToggle = false;
     } else {
       $(".legs").css("fill", "#FFA500");
-      legsToggle = false;
+      legsToggle = true;
     }
   });
+
+  //Muscle Fatigue colors
+  let armMuscleFatigue = 5
+  if (armMuscleFatigue === 0){
+    $(".arms").css("fill", "#555");
+  } else if(armMuscleFatigue === 1){
+    $(".arms").css("fill", "#7d4141");
+  } else if(armMuscleFatigue <= 3){
+    $(".arms").css("fill", "#af3737");
+  } else if(armMuscleFatigue <= 5){
+    $(".arms").css("fill", "#f51414");
+  }
+
+  let shoulderMuscleFatigue = 3
+  if (shoulderMuscleFatigue === 0){
+    $(".shoulders").css("fill", "#555");
+  } else if(shoulderMuscleFatigue === 1){
+    $(".shoulders").css("fill", "#7d4141");
+  } else if(shoulderMuscleFatigue <= 3){
+    $(".shoulders").css("fill", "#af3737");
+  } else if(shoulderMuscleFatigue <= 5){
+    $(".shoulders").css("fill", "#f51414");
+  }
+
+  let chestMuscleFatigue = 3
+  if (chestMuscleFatigue === 0){
+    $(".chest").css("fill", "#555");
+  } else if(chestMuscleFatigue === 1){
+    $(".chest").css("fill", "#7d4141");
+  } else if(chestMuscleFatigue <= 3){
+    $(".chest").css("fill", "#af3737");
+  } else if(chestMuscleFatigue <= 5){
+    $(".chest").css("fill", "#f51414");
+  }
+
+  let backMuscleFatigue = 1
+  if (backMuscleFatigue === 0){
+    $(".back").css("fill", "#555");
+  } else if(backMuscleFatigue === 1){
+    $(".back").css("fill", "#7d4141");
+  } else if(backMuscleFatigue <= 3){
+    $(".back").css("fill", "#af3737");
+  } else if(backMuscleFatigue <= 5){
+    $(".back").css("fill", "#f51414");
+  }
+
+  let coreMuscleFatigue = 0
+  if (coreMuscleFatigue === 0){
+    $(".core").css("fill", "#555");
+  } else if(coreMuscleFatigue === 1){
+    $(".core").css("fill", "#7d4141");
+  } else if(coreMuscleFatigue <= 3){
+    $(".core").css("fill", "#af3737");
+  } else if(coreMuscleFatigue <= 5){
+    $(".core").css("fill", "#f51414");
+  }
+
+  let legMuscleFatigue = 0
+  if (legMuscleFatigue === 0){
+    $(".legs").css("fill", "#555");
+  } else if(legMuscleFatigue === 1){
+    $(".legs").css("fill", "#7d4141");
+  } else if(legMuscleFatigue <= 3){
+    $(".legs").css("fill", "#af3737");
+  } else if(legMuscleFatigue <= 5){
+    $(".legs").css("fill", "#f51414");
+  }
 })
