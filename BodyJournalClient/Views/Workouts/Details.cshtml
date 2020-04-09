@@ -10,9 +10,9 @@
   {
       <table class="table table-striped">
       <tr>
-        <th>Name</th>
-        <th>Intensity</th>
-        <th>Reviewer Name</th>
+        <th>@Model.Name</th>
+        <th>@Model.IntensityScore</th>
+        <th>@Model.Satisfaction</th>
       </tr>
       @foreach (Exercise exercise in Model.Exercises)
       {

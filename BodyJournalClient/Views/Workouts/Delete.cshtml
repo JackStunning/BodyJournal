@@ -1,7 +1,6 @@
  @{
   Layout = "_Layout";
 }
-@using BodyJournalClient.Models;
 @model BodyJournalClient.Models.Workout;
 
 <div class="text-center">
@@ -13,9 +12,7 @@
     </form>
 
   <div class="links">
-    <a href="/home">Home</a>
-    <a href="/data">View Data</a>
-    <a href="/exercises">View Exercises</a>
+    <a href="/workouts/@(Model.Id)"><p>View workout</p></a>
   </div>
 </div>  
 
