@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model BodyJournalClient.ViewModels.ViewExercise
+@model BodyJournalClient.Models.Exercise;
 
 
 <div class="text-center">
@@ -10,9 +10,12 @@
         
     @* <p>List: Exercise with their Sets, Reps,</p> *@
         <div class="exercise">
-          <span>@Model.Name</span>
-          <span>@Model.IntensityScore</span>
-          <span>@Model.Satisfaction</span>
+         <span>@Model.Name</span>
+                <span>@Model.Weight</span>
+                <span>@Model.Reps</span>
+                <span>@Model.Sets</span>
+                <span>@Model.MuscleGroup</span>
+                <span>@Model.Intensity</span>
         </div>
 
   <div class="links">

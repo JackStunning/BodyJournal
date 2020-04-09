@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System;
 
 namespace BodyJournalAPI.Models
 {
@@ -7,8 +8,13 @@ namespace BodyJournalAPI.Models
   {
     [Required]
     public string Name { get; set; }
-    public int Satisfaction { get; set; }
     [Required]
-    public IEnumerable<ViewExercise> Exercises { get; set; }
+    public DateTime TimeOfWorkout { get; set; }
+    // Keeps Track of the Time of Workout
+    [Required]
+    public int Satisfaction { get; set; }
+    // User inputed Satisfaction score out of 5
+    [Required]
+    public int IntensityScore { get; set; }
   }
 }

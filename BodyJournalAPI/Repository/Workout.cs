@@ -21,7 +21,7 @@ namespace BodyJournalAPI.Repository
 
       IQueryable<Exercise> exercises = (from e in this.BodyJournalContext.Exercises join ew in exerciseWorkout on e.Id equals ew.ExerciseId select e);
 
-      Workout w = GetWorkout(id);
+      Workout w = FindByCondition(x => x.Id == id).SingleOrDefault();
       int inten = 0;
       foreach (Exercise item in exercises)
       {

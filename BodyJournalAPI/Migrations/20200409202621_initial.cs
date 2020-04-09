@@ -154,11 +154,11 @@ namespace BodyJournalApi.Migrations
                 columns: new[] { "Id", "AbsFatigue", "ArmsFatigue", "BackFatigue", "ChestFatigue", "CurrentTime", "LegsFatigue", "ShouldersFatigue", "WorkoutId" },
                 values: new object[,]
                 {
-                    { 5, 0, 3, 5, 3, new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1240), 3, 5, 5 },
-                    { 4, 0, 3, 1, 1, new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1236), 2, 3, 8 },
-                    { 3, 0, 3, 3, 4, new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1233), 3, 3, 4 },
-                    { 1, 0, 1, 2, 4, new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(472), 1, 1, 6 },
-                    { 2, 0, 1, 1, 1, new DateTime(2020, 4, 9, 10, 53, 0, 349, DateTimeKind.Local).AddTicks(1209), 1, 4, 3 }
+                    { 5, 0, 3, 5, 3, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(6959), 3, 5, 5 },
+                    { 4, 0, 3, 1, 1, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(6956), 2, 3, 8 },
+                    { 3, 0, 3, 3, 4, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(6952), 3, 3, 4 },
+                    { 1, 0, 1, 2, 4, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(6221), 1, 1, 6 },
+                    { 2, 0, 1, 1, 1, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(6928), 1, 4, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -166,14 +166,14 @@ namespace BodyJournalApi.Migrations
                 columns: new[] { "Id", "IntensityScore", "Name", "Satisfaction", "TimeOfWorkout" },
                 values: new object[,]
                 {
-                    { 7, 8, "Arms day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6175) },
-                    { 1, 7, "Upper body day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 345, DateTimeKind.Local).AddTicks(9842) },
-                    { 2, 3, "Lower body day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6114) },
-                    { 3, 7, "Shoulder day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6162) },
-                    { 4, 6, "Back day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6167) },
-                    { 5, 4, "Abs day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6170) },
-                    { 6, 8, "Chest day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6173) },
-                    { 8, 6, "Legs day", 5, new DateTime(2020, 4, 9, 10, 53, 0, 348, DateTimeKind.Local).AddTicks(6178) }
+                    { 7, 8, "Arms day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(2347) },
+                    { 1, 7, "Upper body day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 656, DateTimeKind.Local).AddTicks(2844) },
+                    { 2, 3, "Lower body day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(2258) },
+                    { 3, 7, "Shoulder day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(2303) },
+                    { 4, 6, "Back day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(2308) },
+                    { 5, 4, "Abs day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(2311) },
+                    { 6, 8, "Chest day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(2344) },
+                    { 8, 6, "Legs day", 5, new DateTime(2020, 4, 9, 13, 26, 21, 658, DateTimeKind.Local).AddTicks(2350) }
                 });
 
             migrationBuilder.CreateIndex(

@@ -24,9 +24,9 @@ namespace BodyJournalAPI.Controllers
 
     #region Exercises
     [HttpGet("exercises/{id}")]
-    public IActionResult GetExercise(int Id)
+    public IActionResult GetExercise(int id)
     {
-      return Ok(_db.Exercise.GetExercise(Id));
+      return Ok(_db.Exercise.GetExercise(id));
     }
     [HttpGet("exercises")]
     public IActionResult GetExercises()
@@ -63,9 +63,8 @@ namespace BodyJournalAPI.Controllers
     [HttpGet("workouts/{id}")]
     public IActionResult GetWorkout(int id)
     {
-      var model = _db.Workout.GetWorkout(id);
       // var result = _mapper.Map<ViewWorkout>(model);
-      return Ok(model);
+      return Ok(_db.Workout.GetWorkout(id));
     }
 
     [HttpGet("workouts")]
