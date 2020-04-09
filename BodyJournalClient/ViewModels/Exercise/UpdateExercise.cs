@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BodyJournalAPI.Models
+namespace BodyJournalClient.ViewModels
 {
-  public class CreateExercise
+  public class UpdateExercise
   {
     public int Weight { get; set; }
 

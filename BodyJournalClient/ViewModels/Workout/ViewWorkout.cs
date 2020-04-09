@@ -1,14 +1,13 @@
-using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace BodyJournalAPI.Models
+namespace BodyJournalClient.ViewModels
 {
-  public class CreateWorkout
+  public class ViewWorkout
   {
-    [Required]
+    public int Id { get; set; }
     public string Name { get; set; }
     public int Satisfaction { get; set; }
-    [Required]
+    public int IntensityScore { get; set; }
     public IEnumerable<ViewExercise> Exercises { get; set; }
   }
 }

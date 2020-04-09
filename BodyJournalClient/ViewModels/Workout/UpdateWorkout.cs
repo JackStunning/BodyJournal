@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace BodyJournalAPI.Models
+namespace BodyJournalClient.ViewModels
 {
-  public class CreateWorkout
+  public class UpdateWorkout
   {
     [Required]
     public string Name { get; set; }
