@@ -63,7 +63,8 @@ html {
 .muscle-groups {
   position: relative;
   background: #eee;
-  width: 320px;
+  width: 350px;
+  height: 500px;
   padding: 0.5rem 0.3rem;
   border-radius: 5px;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .5);
