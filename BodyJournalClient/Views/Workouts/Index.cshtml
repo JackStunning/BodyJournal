@@ -2,7 +2,7 @@
 @model IEnumerable<BodyJournalClient.Models.Workout>
 
 <div class="text-center">
-
+    <h1 class="display-4">Workouts</h1>
 @if(Model.Any())
   {
       @foreach (Workout workout in Model)
@@ -10,7 +10,7 @@
         <div class="workout">
             <a href="workouts/@(workout.Id)">
                 <span>@workout.Name</span>
-                <span>@workout.IntensityScore</span>
+                @* <span>@workout.IntensityScore</span> *@
             </a>
         </div>
     }

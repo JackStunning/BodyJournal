@@ -15,7 +15,7 @@ namespace BodyJournalClient.Models
     public int Satisfaction { get; set; }
     // User inputed Satisfaction score out of 5
     public int IntensityScore { get; set; }
-
+    public virtual ApplicationUser User { get; set; }
     public IEnumerable<Exercise> Exercises { get; set; }
     public static List<Workout> GetAllWorkouts()
     {

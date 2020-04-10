@@ -8,13 +8,33 @@
 
   <form asp-controller="Workouts" asp-action="Create" method="post">
 
-    <div class="form-group">
+    @* <div class="form-group">
       <label for="Name">Name</label>
       <input class="form-control" type="text" id="Name" asp-for="Name"/>
-    </div>
+    </div> *@
+     @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+    <br>
+    @Html.LabelFor(model => model.IntensityScore)
+    @Html.TextBoxFor(model => model.IntensityScore)
+    <br>
+     @Html.LabelFor(model => model.TimeOfWorkout)
+    @Html.TextBoxFor(model => model.TimeOfWorkout)
+    <br>
+    @Html.LabelFor(model => model.Satisfaction)
+    @Html.TextBoxFor(model => model.Satisfaction)
+    <br>
+      @* <label for="ExerciseOne">Exercise one:</label>
+      <select id="ExerciseOne" name="exercises" asp-for="@(Model.Exercises)" asp-items="ViewBag.ExerciseOne"></select>
 
-      <label for="ExerciseOne">Exercise one:</label>
-      <select id="ExerciseOne" name="exercises" asp-for="@(Model.Exercises)" asp-items="ViewBag.ExerciseOne"></select> 
+         <label for="ExerciseTwo">Exercise Two:</label>
+      <select id="ExerciseTwo" name="exercises" asp-for="@(Model.Exercises)" asp-items="ViewBag.ExerciseTwo"></select> 
+
+         <label for="ExerciseThree">Exercise Three:</label>
+      <select id="ExerciseThree" name="exercises" asp-for="@(Model.Exercises)" asp-items="ViewBag.ExerciseThree"></select> 
+
+         <label for="ExerciseFour">Exercise Four:</label>
+      <select id="ExerciseFour" name="exercises" asp-for="@(Model.Exercises)" asp-items="ViewBag.ExerciseFour"></select>   *@
     @* @Html.DropDownListFor(x => x.Exercises., new SelectList(ViewBag.Accounts, "AccountID", "AccountName"))
     @Html.Label("Exercise One")
     @Html.DropDownList("ViewBag.ExerciseOne")<br>
@@ -28,10 +48,10 @@
      @Html.Label("Exercise Four")
     @Html.DropDownList("ViewBag.ExerciseFour")<br> *@
     
-     <div class="form-group">
+     @* <div class="form-group">
       <label for="Satisfaction">Satisfaction</label>
       <input class="form-control" type="text" id="Satisfaction" asp-for="Satisfaction" required/>
-    </div>
+    </div> *@
 
     <input type="submit" value="Create Workout" class="btn btn-default" />
   </form>

@@ -10,7 +10,7 @@ namespace BodyJournalAPI.Entities
     public DateTime TimeOfWorkout { get; set; }
     public int Satisfaction { get; set; }
     public int IntensityScore { get; set; }
-    // public IEnumerable<Exercise> Exercises { get; set; }
+    public IEnumerable<Exercise> Exercises { get; set; }
   }
 }
 

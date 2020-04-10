@@ -4,8 +4,6 @@ using BodyJournalAPI.Helpers;
 using System.Linq;
 using System.Collections.Generic;
 
-
-
 namespace BodyJournalAPI.Repository
 {
   public class WorkoutRepository : RepositoryBase<Workout>,
@@ -28,6 +26,7 @@ namespace BodyJournalAPI.Repository
         inten += item.Intensity;
       }
       w.IntensityScore = inten;
+      w.Exercises = exercises;
 
       return w;
     }

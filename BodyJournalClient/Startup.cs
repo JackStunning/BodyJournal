@@ -1,37 +1,51 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 using BodyJournalClient.Models;
+using BodyJournalClient.Helpers;
+using System;
 
 namespace BodyJournalClient
 {
   public class Startup
   {
-    public Startup(IConfiguration configuration)
-    {
-      Configuration = configuration;
-    }
-
     public IConfiguration Configuration { get; }
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllersWithViews();
-      // services.AddIdentity<ApplicationUser, IdentityRole>();
+
+      services.AddEntityFrameworkMySql()
+     .AddDbContext<BodyJournalClientContext>(options => options
+       .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<BodyJournalClientContext>();
+
+      // services.AddAuthorization(options =>
+      // {
+      //   options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+      // });
+
+      services.Configure<IdentityOptions>(options =>
+      {
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 0;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredUniqueChars = 0;
+      });
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-      if (env.IsDevelopment())
-      {
-        app.UseDeveloperExceptionPage();
-      }
-      else
-      {
-        app.UseExceptionHandler("/Home/Error");
-        app.UseHsts();
-      }
+
+      app.UseAuthentication();
+
       app.UseDefaultFiles(); // Added for Javascript Functionality
       // app.UseHttpsRedirection();
       app.UseStaticFiles();

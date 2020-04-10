@@ -63,7 +63,6 @@ namespace BodyJournalAPI.Controllers
     [HttpGet("workouts/{id}")]
     public IActionResult GetWorkout(int id)
     {
-      // var result = _mapper.Map<ViewWorkout>(model);
       return Ok(_db.Workout.GetWorkout(id));
     }
 
@@ -71,7 +70,6 @@ namespace BodyJournalAPI.Controllers
     public IActionResult GetWorkouts()
     {
       var model = _db.Workout.GetWorkouts();
-      // var result = _mapper.Map<IEnumerable<ViewWorkout>>(model);
       return Ok(model);
     }
     [HttpPost("workouts")]

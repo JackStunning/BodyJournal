@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace JodyJournalClient.Models
+namespace BodyJournalClient.Models
 {
   public class ApplicationUser : IdentityUser
   {

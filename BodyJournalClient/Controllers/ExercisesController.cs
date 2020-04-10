@@ -37,7 +37,7 @@ namespace BodyJournalClient.Controllers
     [Route("exercises/create")]
     public ActionResult Create()
     {
-      // ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Description");
+      // ViewBag.WorkoutId = new SelectList(Exercise., "TreatId", "Description");
       return View();
     }
     [HttpPost]
