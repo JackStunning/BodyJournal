@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <title>W3.CSS Template</title>
@@ -29,38 +27,23 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
     <script type="text/javascript">
-  
-      
       let averageExerciseIntensity;
       let dataPoint;
       let dataPoint2;
-      let dataPoint3;
-      let dataPoint4;
-      let dataPoint5;
-      let dataPoint6;
-      let dataPoint7;
-
+      let testdataPoint = 4;
         async function makeApiCall() {
         let intensityCount = 0;
         let responseExercise = await fetch("http://localhost:4000/api/bodyjournal/exercises");
         let jsonifiedResponseExercise= await responseExercise.json();
-        dataPoint = jsonifiedResponseExercise[0].intensity;
-        dataPoint2 = jsonifiedResponseExercise[1].intensity;
-        dataPoint3 = jsonifiedResponseExercise[2].intensity;
-        dataPoint4 = jsonifiedResponseExercise[3].intensity;
-        dataPoint5 = jsonifiedResponseExercise[4].intensity;
-        dataPoint6 = jsonifiedResponseExercise[5].intensity;
-        dataPoint7 = jsonifiedResponseExercise[6].intensity;
-
-
+        let intensityScore = jsonifiedResponseExercise[0].intensity;
         for (let i=0; i < jsonifiedResponseExercise.length; i++)
         {
           intensityCount += jsonifiedResponseExercise[i].intensity;
         }
-
         averageExerciseIntensity = intensityCount/jsonifiedResponseExercise.length -1;
+        dataPoint2 = intensityCount;
+        dataPoint = intensityScore;
         }
-
         async function Load(){
           makeApiCall();
           GoogleLoad();
@@ -69,22 +52,18 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       }
-
       Load();
-
       function drawChart() {
-
         var data = google.visualization.arrayToDataTable([
           ['Day', 'Exercise Intensity'],
           ['3/24',  dataPoint],
-          ['3/25',  dataPoint2],
-          ['3/26',  dataPoint3],
-          ['3/27',  dataPoint4],
-          ['3/28',  dataPoint5],
-          ['3/29',  dataPoint6],
-          ['3/30',  dataPoint7],
+          ['3/25',  4],
+          ['3/26',  5],
+          ['3/27',  averageExerciseIntensity],
+          ['3/28',  2],
+          ['3/29',  1],
+          ['3/30',  0],
         ]);
-
         var options = {
           title: 'Exercise Intensity by Day',
           curveType: 'function',
@@ -97,9 +76,7 @@
   </head>
 
   <body class="w3-light-grey">
-    <!-- !PAGE CONTENT! -->
-    <div class="w3-main">
-      <!-- Header -->
+    <div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
       <header class="w3-container" style="padding-top: 22px;">
         <h5>
           <b><i class="fa fa-dashboard"></i> Muscle Groups</b>
@@ -109,20 +86,19 @@
       <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-quarter">
           <div class="w3-container w3-red w3-padding-16">
-            <div class="w3-left"><div id="Chest"><i class="w3-xxxlarge"></i></div></div>
+            <div class="w3-left"><i class="w3-xxxlarge"></i></div>
             <h4>Chest</h4>
             <p>Days last worked on</p>
-            <h3>0</h3>
+            <h3>3</h3>
             <div class="w3-clear"></div>
           </div>
-
         </div>
         <div class="w3-quarter">
           <div class="w3-container w3-blue w3-padding-16">
             <div class="w3-left"><i class="w3-xxxlarge"></i></div>
             <h4>Back</h4>
             <p>Days last worked on</p>
-            <h3>0</h3>
+            <h3>2</h3>
             <div class="w3-clear"></div>
           </div>
         </div>
@@ -131,7 +107,7 @@
             <div class="w3-left"><i class="w3-xxxlarge"></i></div>
             <h4>Abs</h4>
             <p>Days last worked on</p>
-            <h3>0</h3>
+            <h3>2</h3>
             <div class="w3-clear"></div>
           </div>
         </div>
@@ -140,22 +116,12 @@
             <div class="w3-left"><i class="w3-xxxlarge"></i></div>
             <h4>Legs</h4>
             <p>Days last worked on</p>
-            <h3>0</h3>
+            <h3>5</h3>
             <div class="w3-clear"></div>
           </div>
         </div>
       </div>
-
-      <div class="w3-panel">
-        <div class="w3-row-padding" style="margin: 0 -16px;">
-          <div class="w3-third">
-            <h5>Muscle groups graph</h5>
-            <img
-              src="/w3images/region.jpg"
-              style="width: 100%;"
-              alt="Google Regional Map"
-            />
-          </div>
+      
           <div class="w3-twothird">
             <h5>Workouts</h5>
             <table class="w3-table w3-striped w3-white">
@@ -212,7 +178,7 @@
         <h5>General Stats</h5>
         <p>Total Workouts</p>
         <div class="w3-grey">
-          <div class="w3-container w3-padding"> "${text}"" </div>
+          <div class="w3-container w3-padding">'${IntensityScore}'</div>
         </div>
 
         <p>Total Exercises</p>
@@ -226,18 +192,11 @@
         </div>
       </div>
       <hr />
-
-      <!-- End page content -->
     </div>
 
     <script>
-      // Get the Sidebar
       var mySidebar = document.getElementById("mySidebar");
-
-      // Get the DIV with overlay effect
       var overlayBg = document.getElementById("myOverlay");
-
-      // Toggle between showing and hiding the sidebar, and add overlay effect
       function w3_open() {
         if (mySidebar.style.display === "block") {
           mySidebar.style.display = "none";
@@ -247,8 +206,6 @@
           overlayBg.style.display = "block";
         }
       }
-
-      // Close the sidebar with the close button
       function w3_close() {
         mySidebar.style.display = "none";
         overlayBg.style.display = "none";

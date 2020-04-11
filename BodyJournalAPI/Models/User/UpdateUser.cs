@@ -1,6 +1,6 @@
 namespace BodyJournalAPI.Models
 {
-  public class UpdateModel
+  public class UpdateUser
   {
     public string FirstName { get; set; }
     public string LastName { get; set; }

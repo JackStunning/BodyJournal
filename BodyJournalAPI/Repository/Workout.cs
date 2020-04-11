@@ -26,7 +26,6 @@ namespace BodyJournalAPI.Repository
         inten += item.Intensity;
       }
       w.IntensityScore = inten;
-      w.Exercises = exercises;
 
       return w;
     }

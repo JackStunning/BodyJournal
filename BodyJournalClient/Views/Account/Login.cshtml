@@ -2,22 +2,20 @@
   Layout = "_Layout";
 }
 
-@using BodyJournalClient.ViewModels
-
-@model LoginViewModel
+@model BodyJournalClient.ViewModels.User.LoginViewModel;
 
 <h1>Log in with your account</h1>
 <div class="content">
-  @using (Html.BeginForm())
-  {
-      @Html.LabelFor(m => m.Email)
-      @Html.TextBoxFor(m => m.Email)
+@using (Html.BeginForm("Authenticate", "Account", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.UserName)
+    @Html.TextBoxFor(m => m.UserName)
 
-      @Html.LabelFor(m => m.Password)
-      @Html.PasswordFor(m => m.Password)
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password)
 
-      <input type="submit" value="Log in" class="btn" />
-  }
+    <input type="submit" value="Log in" class="btn" />
+}
 </div>
 
 <div class="links">

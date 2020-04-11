@@ -40,6 +40,14 @@ namespace BodyJournalAPI.Helpers
 
       CreateMap<MuscleGroupFatigue, ViewMuscleGroupFatigue>();
       #endregion
+
+      #region User
+      CreateMap<User, ViewUser>();
+
+      CreateMap<RegisterUser, User>();
+
+      CreateMap<UpdateUser, User>();
+      #endregion
     }
   }
 }

@@ -11,6 +11,7 @@ namespace BodyJournalAPI.Repository
     private IWorkoutRepository _workout;
     private IBiometricRepository _biometric;
     private IMuscleGroupFatigueRepository _muscleGroupFatigue;
+
     public RepositoryWrapper(BodyJournalContext bodyJournalContext)
     {
       _bodyJournalContext = bodyJournalContext;

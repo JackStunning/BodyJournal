@@ -1,8 +1,10 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 
 namespace BodyJournalAPI.Entities
 {
+  [Table("workouts")]
   public class Workout
   {
     public int Id { get; set; }
@@ -10,7 +12,8 @@ namespace BodyJournalAPI.Entities
     public DateTime TimeOfWorkout { get; set; }
     public int Satisfaction { get; set; }
     public int IntensityScore { get; set; }
-    public IEnumerable<Exercise> Exercises { get; set; }
+    [ForeignKey(nameof(User))]
+    public int UserId { get; set; }
   }
 }
 

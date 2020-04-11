@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BodyJournalAPI.Entities
 {
+  [Table("exerciseworkouts")]
   public class ExerciseWorkout
   {
     public int Id { get; set; }

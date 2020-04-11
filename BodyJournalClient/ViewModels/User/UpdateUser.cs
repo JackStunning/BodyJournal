@@ -1,4 +1,4 @@
-namespace BodyJournalClient.ViewModels
+namespace BodyJournalClient.ViewModels.User
 {
   public class UpdateUser
   {

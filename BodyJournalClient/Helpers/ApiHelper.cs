@@ -1,10 +1,36 @@
 using System.Threading.Tasks;
 using RestSharp;
+using System;
 
 namespace BodyJournalClient.Helpers
 {
   class ApiHelper
   {
+    #region Users
+    public static async Task<string> AuthenticateUser(string model)
+    {
+      Console.WriteLine("In authenticate of apihelper rest client: " + model);
+      RestClient client = new RestClient("http://localhost:4000/users");
+      RestRequest request = new RestRequest($"authenticate", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(model);
+      var response = await client.ExecuteAsync(request);
+      Console.WriteLine("In authenticate of apihelper response: " + response);
+      return response.Content;
+    }
+    public static async Task<string> RegisterUser(string model)
+    {
+      Console.WriteLine("In register of apihelper rest client: " + model);
+      RestClient client = new RestClient("http://localhost:4000/users");
+      RestRequest request = new RestRequest($"register", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(model);
+      var response = await client.ExecuteAsync(request);
+      Console.WriteLine("In register of apihelper response: " + response);
+      return response.Content;
+    }
+    #endregion
+
     #region Exercise
     public static async Task<string> GetAllExercises()
     {

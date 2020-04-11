@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using BodyJournalAPI.Entities;
 using System;
-
+using System.Security.Cryptography;
+using System.Text;
 namespace BodyJournalAPI.Helpers
 {
   public class BodyJournalContext : DbContext
@@ -14,59 +15,76 @@ namespace BodyJournalAPI.Helpers
     public DbSet<Workout> Workouts { get; set; }
     public DbSet<ExerciseWorkout> ExerciseWorkouts { get; set; }
     public DbSet<MuscleGroupFatigue> MuscleGroupFatigues { get; set; }
-
+    public DbSet<User> Users { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
+      byte[] passwordHashA;
+      byte[] passwordHashB;
+      byte[] passwordSaltA;
+      byte[] passwordSaltB;
+      using (var hmac = new HMACSHA512())
+      {
+        passwordSaltA = hmac.Key;
+        passwordSaltB = hmac.Key;
+        passwordHashA = hmac.ComputeHash(Encoding.UTF8.GetBytes("a"));
+        passwordHashB = hmac.ComputeHash(Encoding.UTF8.GetBytes("b"));
+      }
+
       base.OnModelCreating(builder);
+      builder.Entity<User>().HasData(
+
+      new User() { Id = 1, FirstName = "a", LastName = "a", UserName = "a", Email = "a@gmail.com", Password = "a", PasswordHash = passwordHashA, PasswordSalt = passwordSaltA },
+      new User() { Id = 2, FirstName = "b", LastName = "b", UserName = "b", Email = "b@gmail.com", Password = "b", PasswordHash = passwordHashB, PasswordSalt = passwordSaltB }
+      );
       #region Exercise
       builder.Entity<Exercise>().HasData(
       #region Chest 1 through 4
-          new Exercise { Id = 1, Name = "Wide Pushup", MuscleGroup = "Chest", Weight = null, Reps = 10, Sets = 3, Intensity = 3 },
-               new Exercise { Id = 2, Name = "Narrow Pushup", MuscleGroup = "Chest", Weight = null, Reps = 10, Sets = 3, Intensity = 4 },
-               new Exercise { Id = 3, Name = "Bench Press", MuscleGroup = "Chest", Weight = 200, Reps = 5, Sets = 3, Intensity = 5 },
-               new Exercise { Id = 4, Name = "Decline Bench Press", MuscleGroup = "Chest", Weight = 100, Reps = 10, Sets = 3, Intensity = 3 },
+          new Exercise { Id = 1, Name = "Wide Pushup", MuscleGroup = "Chest", Weight = null, Reps = 10, Sets = 3, Intensity = 3, UserId = 1 },
+               new Exercise { Id = 2, Name = "Narrow Pushup", MuscleGroup = "Chest", Weight = null, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
+               new Exercise { Id = 3, Name = "Bench Press", MuscleGroup = "Chest", Weight = 200, Reps = 5, Sets = 3, Intensity = 5, UserId = 1 },
+               new Exercise { Id = 4, Name = "Decline Bench Press", MuscleGroup = "Chest", Weight = 100, Reps = 10, Sets = 3, Intensity = 3, UserId = 1 },
       #endregion
 
       #region Back 5 through 8
-          new Exercise { Id = 5, Name = "Seated Row", MuscleGroup = "Back", Weight = 150, Reps = 10, Sets = 3, Intensity = 4 },
-               new Exercise { Id = 6, Name = "Back Extension", MuscleGroup = "Back", Weight = 90, Reps = 10, Sets = 3, Intensity = 2 },
-               new Exercise { Id = 7, Name = "Deadlift", MuscleGroup = "Back", Weight = 300, Reps = 5, Sets = 3, Intensity = 5 },
-               new Exercise { Id = 8, Name = "TBar row", MuscleGroup = "Back", Weight = 200, Reps = 8, Sets = 3, Intensity = 4 },
+          new Exercise { Id = 5, Name = "Seated Row", MuscleGroup = "Back", Weight = 150, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
+               new Exercise { Id = 6, Name = "Back Extension", MuscleGroup = "Back", Weight = 90, Reps = 10, Sets = 3, Intensity = 2, UserId = 1 },
+               new Exercise { Id = 7, Name = "Deadlift", MuscleGroup = "Back", Weight = 300, Reps = 5, Sets = 3, Intensity = 5, UserId = 1 },
+               new Exercise { Id = 8, Name = "TBar row", MuscleGroup = "Back", Weight = 200, Reps = 8, Sets = 3, Intensity = 4, UserId = 1 },
       #endregion
 
       #region Arms 9 through 12
-          new Exercise { Id = 9, Name = "Hammer Curl", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4 },
-               new Exercise { Id = 10, Name = "Rotating Curl", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4 },
-               new Exercise { Id = 11, Name = "Tricep Extension", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4 },
-               new Exercise { Id = 12, Name = "Upright Row", MuscleGroup = "Arms", Weight = 70, Reps = 10, Sets = 3, Intensity = 4 },
+          new Exercise { Id = 9, Name = "Hammer Curl", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4, UserId = 2 },
+               new Exercise { Id = 10, Name = "Rotating Curl", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
+               new Exercise { Id = 11, Name = "Tricep Extension", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
+               new Exercise { Id = 12, Name = "Upright Row", MuscleGroup = "Arms", Weight = 70, Reps = 10, Sets = 3, Intensity = 4, UserId = 2 },
       #endregion
 
       #region Abs 13 through 16
-          new Exercise { Id = 13, Name = "Sit Up", MuscleGroup = "Abs", Weight = null, Reps = 10, Sets = 3, Intensity = 2 },
-               new Exercise { Id = 14, Name = "Plank", MuscleGroup = "Abs", Weight = null, Reps = 1, Sets = 3, Intensity = 2 },
-               new Exercise { Id = 15, Name = "Bicycle", MuscleGroup = "Abs", Weight = null, Reps = 25, Sets = 3, Intensity = 3 },
-               new Exercise { Id = 16, Name = "Leg Rasises", MuscleGroup = "Abs", Weight = null, Reps = 15, Sets = 3, Intensity = 2 },
+          new Exercise { Id = 13, Name = "Sit Up", MuscleGroup = "Abs", Weight = null, Reps = 10, Sets = 3, Intensity = 2, UserId = 1 },
+               new Exercise { Id = 14, Name = "Plank", MuscleGroup = "Abs", Weight = null, Reps = 1, Sets = 3, Intensity = 2, UserId = 1 },
+               new Exercise { Id = 15, Name = "Bicycle", MuscleGroup = "Abs", Weight = null, Reps = 25, Sets = 3, Intensity = 3, UserId = 1 },
+               new Exercise { Id = 16, Name = "Leg Rasises", MuscleGroup = "Abs", Weight = null, Reps = 15, Sets = 3, Intensity = 2, UserId = 1 },
       #endregion
 
       #region Legs 17 through 20
-          new Exercise { Id = 17, Name = "Squat", MuscleGroup = "Legs", Weight = null, Reps = 10, Sets = 3, Intensity = 2 },
-               new Exercise { Id = 18, Name = "Calf Raise", MuscleGroup = "Legs", Weight = 40, Reps = 10, Sets = 3, Intensity = 1 },
-               new Exercise { Id = 19, Name = "Lunge", MuscleGroup = "Legs", Weight = 40, Reps = 10, Sets = 3, Intensity = 3 },
-               new Exercise { Id = 20, Name = "DeadLift", MuscleGroup = "Legs", Weight = 160, Reps = 10, Sets = 3, Intensity = 4 },
+          new Exercise { Id = 17, Name = "Squat", MuscleGroup = "Legs", Weight = null, Reps = 10, Sets = 3, Intensity = 2, UserId = 1 },
+               new Exercise { Id = 18, Name = "Calf Raise", MuscleGroup = "Legs", Weight = 40, Reps = 10, Sets = 3, Intensity = 1, UserId = 1 },
+               new Exercise { Id = 19, Name = "Lunge", MuscleGroup = "Legs", Weight = 40, Reps = 10, Sets = 3, Intensity = 3, UserId = 1 },
+               new Exercise { Id = 20, Name = "DeadLift", MuscleGroup = "Legs", Weight = 160, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
       #endregion
 
       #region Shoulders 21 through 24
-          new Exercise { Id = 21, Name = "Dumbell Shoulder Press", MuscleGroup = "Shoulders", Weight = 35, Reps = 10, Sets = 3, Intensity = 4 },
-               new Exercise { Id = 22, Name = "Barbell Shoulder Press", MuscleGroup = "Shoulders", Weight = 70, Reps = 10, Sets = 3, Intensity = 3 },
-               new Exercise { Id = 23, Name = "Military Press", MuscleGroup = "Shoulders", Weight = 70, Reps = 10, Sets = 3, Intensity = 3 },
-               new Exercise { Id = 24, Name = "Side Lateral Raise", MuscleGroup = "Shoulders", Weight = 35, Reps = 10, Sets = 3, Intensity = 3 });
+          new Exercise { Id = 21, Name = "Dumbell Shoulder Press", MuscleGroup = "Shoulders", Weight = 35, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
+               new Exercise { Id = 22, Name = "Barbell Shoulder Press", MuscleGroup = "Shoulders", Weight = 70, Reps = 10, Sets = 3, Intensity = 3, UserId = 1 },
+               new Exercise { Id = 23, Name = "Military Press", MuscleGroup = "Shoulders", Weight = 70, Reps = 10, Sets = 3, Intensity = 3, UserId = 1 },
+               new Exercise { Id = 24, Name = "Side Lateral Raise", MuscleGroup = "Shoulders", Weight = 35, Reps = 10, Sets = 3, Intensity = 3, UserId = 1 });
       #endregion
       #endregion
 
       #region Workout
       builder.Entity<Workout>().HasData(
       //uses c1, b5
-      new Workout { Id = 1, Name = "Upper body day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 7 },
+      new Workout { Id = 1, Name = "Upper body day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 7, UserId = 1 },
       //uses l 17 and 18
       new Workout
       {
@@ -75,20 +93,21 @@ namespace BodyJournalAPI.Helpers
         TimeOfWorkout = DateTime.
       Now,
         Satisfaction = 5,
-        IntensityScore = 3
+        IntensityScore = 3,
+        UserId = 1
       },
       //21 and 22
-      new Workout { Id = 3, Name = "Shoulder day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 7 },
+      new Workout { Id = 3, Name = "Shoulder day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 7, UserId = 1 },
       //b6 and b7
-      new Workout { Id = 4, Name = "Back day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 6 },
+      new Workout { Id = 4, Name = "Back day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 6, UserId = 1 },
       //abs 13 and 14
-      new Workout { Id = 5, Name = "Abs day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 4 },
+      new Workout { Id = 5, Name = "Abs day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 4, UserId = 1 },
       //c1 and c3
-      new Workout { Id = 6, Name = "Chest day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 8 },
+      new Workout { Id = 6, Name = "Chest day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 8, UserId = 1 },
       //9 and 12
-      new Workout { Id = 7, Name = "Arms day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 8 },
+      new Workout { Id = 7, Name = "Arms day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 8, UserId = 2 },
       //legs 17,(2) and 20,(4)
-      new Workout { Id = 8, Name = "Legs day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 6 }
+      new Workout { Id = 8, Name = "Legs day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 6, UserId = 2 }
   );
       #endregion
 
