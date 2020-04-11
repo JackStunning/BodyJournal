@@ -40,12 +40,9 @@ namespace BodyJournalAPI.Controllers
     [HttpPost("authenticate")]
     public IActionResult Authenticate([FromBody]AuthenticateUser model)
     {
-      Console.WriteLine("In authenticate api call: " + model);
       var user = _userService.Authenticate(model.UserName, model.Password);
-      Console.WriteLine("Model after userservice call: " + user);
       if (user == null)
       {
-        Console.WriteLine("user is null");
         return null;
       }
 
@@ -56,16 +53,12 @@ namespace BodyJournalAPI.Controllers
         Subject = new ClaimsIdentity(new Claim[]
           {
             new Claim("USERID", user.Id.ToString())
-            // new Claim("FIRSTNAME", user.FirstName),
-            // new Claim("LASTNAME", user.LastName),
-            // new Claim("USERNAME", user.UserName)
     }),
-        Expires = DateTime.UtcNow.AddDays(7),
+        Expires = DateTime.UtcNow.AddDays(1),
         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
       };
       var token = tokenHandler.CreateToken(tokenDescriptor);
       var JWToken = tokenHandler.WriteToken(token);
-      Console.WriteLine("Tokenstring: " + JWToken);
       // return Ok(new { JWToken });
       // return basic user info and authentication token
       return Ok(new

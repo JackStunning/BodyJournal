@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using BodyJournalAPI.Repository;
 using BodyJournalAPI.Helpers;
-using BodyJournalAPI.Contracts;
 using BodyJournalAPI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,38 +12,29 @@ using System.Threading.Tasks;
 
 namespace BodyJournalAPI
 {
-  public static class ServiceExtensions
-  {
-    public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
-    {
-      var connectionString = config["ConnectionStrings:DefaultConnection"];
-      services.AddDbContext<BodyJournalContext>(o => o.UseMySql(connectionString));
-    }
-    public static void ConfigureRepositoryWrapper(this IServiceCollection services)
-    {
-      services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-    }
-  }
   public class Startup
   {
+    private readonly IConfiguration _configuration;
+
     public Startup(IConfiguration configuration)
     {
-      Configuration = configuration;
+      _configuration = configuration;
     }
-
-    public IConfiguration Configuration { get; }
     public void ConfigureServices(IServiceCollection services)
     {
-
-      services.ConfigureMySqlContext(Configuration);
       services.AddCors();
-      services.ConfigureRepositoryWrapper();
-
-
       services.AddControllers();
+
+      services.ConfigureMySqlContext(_configuration);
+      services.ConfigureRepositoryWrapper();
       services.AddAutoMapper(typeof(Startup));
 
-      var key = Encoding.ASCII.GetBytes("YourKey-2374-OFFKDI940NG7:56753253-tyuw-5769-0921-kfirox29zoxv");
+      var appSettingsSection = _configuration.GetSection("AppSettings");
+      services.Configure<AppSettings>(appSettingsSection);
+
+      var appSettings = appSettingsSection.Get<AppSettings>();
+      var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
       services.AddAuthentication(x =>
       {
         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
