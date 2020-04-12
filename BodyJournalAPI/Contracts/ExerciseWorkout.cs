@@ -1,5 +1,4 @@
 using BodyJournalAPI.Entities;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace BodyJournalAPI.Contracts

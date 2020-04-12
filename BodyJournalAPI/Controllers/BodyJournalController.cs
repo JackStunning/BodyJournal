@@ -3,8 +3,6 @@ using Microsoft.Extensions.Logging;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Contracts;
 using AutoMapper;
-using System.Collections.Generic;
-using BodyJournalAPI.Models;
 
 namespace BodyJournalAPI.Controllers
 {

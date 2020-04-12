@@ -12,8 +12,6 @@ using Microsoft.AspNetCore.Authorization;
 using BodyJournalAPI.Services;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Models;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 
 namespace BodyJournalAPI.Controllers
 {
@@ -59,8 +57,6 @@ namespace BodyJournalAPI.Controllers
       };
       var token = tokenHandler.CreateToken(tokenDescriptor);
       var JWToken = tokenHandler.WriteToken(token);
-      // return Ok(new { JWToken });
-      // return basic user info and authentication token
       return Ok(new
       {
         Id = user.Id,
@@ -76,7 +72,6 @@ namespace BodyJournalAPI.Controllers
     public IActionResult Register([FromBody]RegisterUser model)
     {
       var user = _mapper.Map<User>(model);
-      Console.WriteLine("In api register before trying to create: " + user);
       try
       {
         _userService.CreateUser(user, model.Password);
