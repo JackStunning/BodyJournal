@@ -1,4 +1,4 @@
-import config from "./node_modules/config";
+import config from "config";
 import { authHeader } from "../helpers";
 import { handleResponse } from "../helpers";
 

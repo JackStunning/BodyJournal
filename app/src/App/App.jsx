@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { history } from "../helpers";
 import { alertActions } from "../actions";
 import { UserRoute } from "../components";
-import { HomePage } from "../views/HomePage";
-import { ExercisesView } from "../views/ExercisesView";
-import { WorkoutsView } from "../views/WorkoutsView";
-import { LoginPage } from "../views/LoginPage";
-import { RegisterPage } from "../views/RegisterPage";
+import { Home } from "../views/Home";
+import { Exercises } from "../views/Exercises";
+import { Workouts } from "../views/Workouts";
+import { Login } from "../views/Login";
+import { Register } from "../views/Register";
 
 function App() {
   const alert = useSelector((state) => state.alert);
@@ -30,11 +30,11 @@ function App() {
           )}
           <Router history={history}>
             <Switch>
-              <UserRoute exact path="/" component={HomePage} />
-              <UserRoute exact path="/exercises" component={ExercisesView} />
-              <UserRoute exact path="/workouts" component={WorkoutsView} />
-              <Route path="/login" component={LoginPage} />
-              <Route path="/register" component={RegisterPage} />
+              <UserRoute exact path="/" component={Home} />
+              <UserRoute exact path="/exercises" component={Exercises} />
+              <UserRoute exact path="/workouts" component={Workouts} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
               <Redirect from="*" to="/" />
             </Switch>
           </Router>

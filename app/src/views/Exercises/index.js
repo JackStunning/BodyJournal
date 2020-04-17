@@ -1,1 +1,1 @@
-export * from "./ExercisesView";
+export * from "./Exercises";
