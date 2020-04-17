@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../Actions";
 
-function LoginPage() {
+function Login() {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -81,4 +81,4 @@ function LoginPage() {
   );
 }
 
-export { LoginPage };
+export { Login };

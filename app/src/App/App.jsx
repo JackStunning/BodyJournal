@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { history } from "../Helpers";
-import { alertActions } from "../Actions";
-import { UserRoute } from "../Components";
-import { HomePage } from "../HomePage";
-import { ExercisesView } from "../ExercisesView";
-import { WorkoutsView } from "../WorkoutsView";
-import { LoginPage } from "../LoginPage";
-import { RegisterPage } from "../RegisterPage";
+import { history } from "../helpers";
+import { alertActions } from "../actions";
+import { UserRoute } from "../components";
+import { HomePage } from "../views/HomePage";
+import { ExercisesView } from "../views/ExercisesView";
+import { WorkoutsView } from "../views/WorkoutsView";
+import { LoginPage } from "../views/LoginPage";
+import { RegisterPage } from "../views/RegisterPage";
 
 function App() {
   const alert = useSelector((state) => state.alert);

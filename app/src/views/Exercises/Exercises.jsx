@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { exerciseActions } from "../../actions";
 
-function ExercisesView() {
+function Exercises() {
   const exercises = useSelector((state) => state.exercises);
   const dispatch = useDispatch();
 
@@ -101,4 +101,4 @@ function ExercisesView() {
   );
 }
 
-export { ExercisesView };
+export { Exercises };

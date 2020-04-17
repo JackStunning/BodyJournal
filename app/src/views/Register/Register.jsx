@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { userActions } from "../Actions";
 
-function RegisterPage() {
+function Register() {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -117,4 +117,4 @@ function RegisterPage() {
   );
 }
 
-export { RegisterPage };
+export { Register };

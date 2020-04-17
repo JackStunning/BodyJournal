@@ -1,6 +1,6 @@
 import config from "config";
-import { authHeader } from "../Helpers";
-import { handleResponse } from "../Helpers";
+import { authHeader } from "../helpers";
+import { handleResponse } from "../helpers";
 
 export const workoutService = {
   getWorkout,

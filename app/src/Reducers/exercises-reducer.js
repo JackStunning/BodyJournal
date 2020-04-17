@@ -1,4 +1,4 @@
-import { exerciseConstants } from "../Constants";
+import { exerciseConstants } from "../constants";
 
 export function exercises(state = {}, action) {
   switch (action.type) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { exerciseActions } from "../../actions";
 
-function CreateExerciseView() {
+function CreateExercise() {
   const [exercise, setExercise] = useState({
     weight: 0,
     reps: 0,
@@ -121,4 +121,4 @@ function CreateExerciseView() {
   );
 }
 
-export { CreateExerciseView };
+export { CreateExercise };

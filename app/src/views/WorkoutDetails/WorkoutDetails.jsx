@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { workoutActions } from "../../actions";
 
-function WorkoutDetailsView() {
+function WorkoutDetails() {
   const workout = useSelector((state) => state.workout);
   const dispatch = useDispatch();
 
@@ -18,4 +18,4 @@ function WorkoutDetailsView() {
   );
 }
 
-export { WorkoutDetailsView };
+export { WorkoutDetails };

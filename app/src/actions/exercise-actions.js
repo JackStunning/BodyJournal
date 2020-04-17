@@ -1,7 +1,7 @@
-import { exerciseConstants } from "../Constants";
+import { exerciseConstants } from "../constants";
 import { exerciseService } from "../services";
 import { alertActions } from "./";
-import { history } from "../Helpers";
+import { history } from "../helpers";
 
 export const exerciseActions = {
   getExercise,
