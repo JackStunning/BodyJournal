@@ -4,6 +4,7 @@ import { exerciseActions } from "../../actions";
 import ExerciseHeader from "./ExerciseHeader";
 import PropTypes from "prop-types";
 import { ExerciseList } from "./ExerciseList";
+import { Grid } from "@material-ui/core";
 
 function Exercises() {
   const exercises = useSelector((state) => state.exercises);
@@ -27,7 +28,7 @@ function Exercises() {
   };
   return (
     <React.Fragment>
-      <ExerciseHeader onShowingExercises={handle}></ExerciseHeader>
+      <ExerciseHeader onShowingExercises={handle} />
       {exerciseList}
     </React.Fragment>
   );
