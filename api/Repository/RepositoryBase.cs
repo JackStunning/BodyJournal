@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using BodyJournalAPI.Entities;
 
 namespace BodyJournalAPI.Repository
 {
@@ -21,6 +22,7 @@ namespace BodyJournalAPI.Repository
       return this.BodyJournalContext.Set<T>().AsNoTracking();
     }
     public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) => this.BodyJournalContext.Set<T>().Where(expression).AsNoTracking();
+
     public void Create(T entity)
     {
       this.BodyJournalContext.Set<T>().Add(entity);

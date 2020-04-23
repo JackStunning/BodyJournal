@@ -1,7 +1,9 @@
 using BodyJournalAPI.Contracts;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Helpers;
-using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BodyJournalAPI.Repository
 {
@@ -12,14 +14,14 @@ namespace BodyJournalAPI.Repository
     {
     }
 
-    public Biometric GetBiometric(int id)
+    public async Task<Biometric> GetBiometricAsync(int id)
     {
-      return FindByCondition(entry => entry.Id == id).SingleOrDefault();
+      return await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
     }
 
-    public IQueryable<Biometric> GetBiometrics()
+    public async Task<IEnumerable<Biometric>> GetBiometricsAsync(int id)
     {
-      return FindAll();
+      return await FindByCondition(entry => entry.UserId == id).ToListAsync();
     }
 
     public void CreateBiometric(Biometric model)
@@ -29,15 +31,15 @@ namespace BodyJournalAPI.Repository
 
     public void UpdateBiometric(int id, Biometric update)
     {
-      var model = GetBiometric(id);
+      var model = GetBiometricAsync(id);
       if (model == null)
         throw new System.Exception($"No Biometric");
       Update(update);
     }
 
-    public void DeleteBiometric(int id)
+    public async void DeleteBiometric(int id)
     {
-      var model = GetBiometric(id);
+      Biometric model = await GetBiometricAsync(id);
       if (model != null)
         Delete(model);
     }

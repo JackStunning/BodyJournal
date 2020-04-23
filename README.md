@@ -2,7 +2,7 @@
 
 #### Personalized Fitness 04/06/2020
 
-#### By Andrew Philott, Steven Fleming, Jack Dunning
+#### By Andrew Philott
 
 ## Description
 
@@ -48,7 +48,7 @@ No bugs
 
 ## Support and contact details
 
-For feedback, questions and/or ideas, please email <andrewphilpott92@gmail.com>, <12flemings@gmail.com>, <JackStunning9001@gmail.com>
+For feedback, questions and/or ideas, please email <andrewphilpott92@gmail.com>
 
 ## Technologies Used
 

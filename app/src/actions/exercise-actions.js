@@ -6,6 +6,7 @@ import { history } from "../helpers";
 export const exerciseActions = {
   getExercise,
   getExercises,
+  // getExercisesByMuscle,
   createExercise,
   updateExercise,
   deleteExercise,
@@ -53,6 +54,27 @@ function getExercises() {
   }
 }
 
+// function getExercisesByMuscle(muscle) {
+//   return (dispatch) => {
+//     dispatch(request(muscle));
+
+//     exerciseService.getExercisesByMuscle(muscle).then(
+//       (exercises) => dispatch(success(exercises)),
+//       (error) => dispatch(failure(error.toString()))
+//     );
+//   };
+
+//   function request(muscle) {
+//     return { type: exerciseConstants.GETALL_REQUEST, muscle };
+//   }
+//   function success(exercises) {
+//     return { type: exerciseConstants.GETALL_SUCCESS, exercises };
+//   }
+//   function failure(error) {
+//     return { type: exerciseConstants.GETALL_FAILURE, error };
+//   }
+// }
+
 function createExercise(exercise) {
   return (dispatch) => {
     dispatch(request(exercise));
@@ -60,7 +82,7 @@ function createExercise(exercise) {
     exerciseService.createExercise(exercise).then(
       (exercise) => {
         dispatch(success());
-        history.push("/home");
+        history.push("/exercises");
         dispatch(alertActions.success("exercise created"));
       },
       (error) => {

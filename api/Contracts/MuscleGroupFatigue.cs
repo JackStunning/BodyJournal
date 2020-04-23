@@ -1,12 +1,12 @@
 using BodyJournalAPI.Entities;
-using System.Linq;
-
+using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace BodyJournalAPI.Contracts
 {
   public interface IMuscleGroupFatigueRepository : IRepositoryBase<MuscleGroupFatigue>
   {
-    MuscleGroupFatigue GetMuscleGroupFatigue(int id);
-    IQueryable<MuscleGroupFatigue> GetMuscleGroupFatigues();
+    Task<MuscleGroupFatigue> GetMuscleGroupFatigueAsync(int id);
+    Task<IEnumerable<MuscleGroupFatigue>> GetMuscleGroupFatiguesAsync();
     void CreateMuscleGroupFatigue(MuscleGroupFatigue model);
     void UpdateMuscleGroupFatigue(int id, MuscleGroupFatigue model);
     void DeleteMuscleGroupFatigue(int id);

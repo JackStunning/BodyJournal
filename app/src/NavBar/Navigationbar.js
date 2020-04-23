@@ -1,6 +1,3 @@
-import React, { useEffect } from "react";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
   AppBar,
@@ -10,16 +7,6 @@ import {
   Button,
   InputBase,
 } from "@material-ui/core";
-import { history } from "../helpers";
-import { alertActions } from "../actions";
-import { UserRoute } from "../components";
-import { Home } from "../views/Home";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import { Exercises } from "../views/Exercises";
-import { Workouts } from "../views/Workouts";
-import { Login } from "../views/Login";
-import { Register } from "../views/Register";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
@@ -35,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(1),
+  },
+  title: {
+    // flexGrow: 1,
   },
   mainContent: {
     marginTop: "80px",
@@ -52,18 +42,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-function App() {
+const NavigationBar = () => {
   const classes = useStyles();
-  const alert = useSelector((state) => state.alert);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    history.listen((location, action) => {
-      dispatch(alertActions.clear());
-    });
-  }, []);
-
   return (
     <React.Fragment>
       <Container>
@@ -73,7 +53,7 @@ function App() {
               <Grid item xs={7}>
                 <Toolbar>
                   <Typography variant="h6" className={classes.title}>
-                    BodyJournal
+                    LinkedIn
                   </Typography>
                   <div className={classes.search}>
                     <InputBase
@@ -113,27 +93,7 @@ function App() {
           </AppBar>
         </Paper>
       </Container>
-      <Container>
-        <Paper>
-          <h1>Welcome</h1>
-          <div className="col-md-8 offset-md-2">
-            {alert.message && (
-              <div className={`alert ${alert.type}`}>{alert.message}</div>
-            )}
-            <Router history={history}>
-              <Switch>
-                <UserRoute exact path="/" component={Home} />
-                <UserRoute exact path="/exercises" component={Exercises} />
-                <UserRoute exact path="/workouts" component={Workouts} />
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
-                <Redirect from="*" to="/" />
-              </Switch>
-            </Router>
-          </div>
-        </Paper>
-      </Container>
     </React.Fragment>
   );
-}
-export { App };
+};
+export { NavigationBar };

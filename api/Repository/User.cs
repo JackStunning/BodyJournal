@@ -7,7 +7,7 @@ using System;
 using System.Text;
 using System.Security.Cryptography;
 using BodyJournalAPI.Repository;
-
+using System.Threading.Tasks;
 namespace BodyJournalAPI.Repository
 {
   public class UserRepository : RepositoryBase<User>,

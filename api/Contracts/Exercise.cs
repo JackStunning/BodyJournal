@@ -1,14 +1,13 @@
 using BodyJournalAPI.Entities;
-using System.Linq;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 namespace BodyJournalAPI.Contracts
 {
   public interface IExerciseRepository : IRepositoryBase<Exercise>
   {
-    Exercise GetExercise(int id);
-    IQueryable<Exercise> GetExercises(int id);
-    IQueryable<Exercise> GetAllExercisesForUser(int id);
+    Task<Exercise> GetExerciseAsync(int id);
+    Task<IEnumerable<Exercise>> GetExercisesAsync(int id);
+    Task<IEnumerable<Exercise>> GetExercisesByMuscleAsync(int id, string muscle);
     void CreateExercise(Exercise model);
     void UpdateExercise(int id, Exercise model);
     void DeleteExercise(int id);

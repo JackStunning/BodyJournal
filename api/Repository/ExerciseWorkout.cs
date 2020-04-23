@@ -3,7 +3,8 @@ using BodyJournalAPI.Entities;
 using BodyJournalAPI.Helpers;
 using System.Linq;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 namespace BodyJournalAPI.Repository
 {
   public class ExerciseWorkoutRepository : RepositoryBase<ExerciseWorkout>,
@@ -12,13 +13,13 @@ namespace BodyJournalAPI.Repository
     public ExerciseWorkoutRepository(BodyJournalContext bodyJournalContext) : base(bodyJournalContext)
     {
     }
-    public IEnumerable<ExerciseWorkout> GetExerciseWorkouts(int id)
+    public async Task<IEnumerable<ExerciseWorkout>> GetExerciseWorkoutsAsync(int id)
     {
-      return FindByCondition(entry => entry.WorkoutId == id);
+      return await FindByCondition(entry => entry.WorkoutId == id).ToListAsync();
     }
-    public IEnumerable<ExerciseWorkout> GetExerciseWorkout(int id)
+    public async Task<IEnumerable<ExerciseWorkout>> GetExerciseWorkoutAsync(int id)
     {
-      return FindByCondition(entry => entry.WorkoutId == id);
+      return await FindByCondition(entry => entry.WorkoutId == id).ToListAsync();
     }
   }
 }

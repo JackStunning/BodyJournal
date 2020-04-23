@@ -13,6 +13,8 @@ using BodyJournalAPI.Contracts;
 using BodyJournalAPI.Helpers;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BodyJournalAPI.Controllers
 {
@@ -123,15 +125,23 @@ namespace BodyJournalAPI.Controllers
 
     #region Exercises
     [HttpGet("exercises/{id}")]
-    public IActionResult GetExercise(int id)
-    {
-      return Ok(_db.Exercise.GetExercise(id));
-    }
-    [HttpGet("exercises")]
-    public IActionResult GetExercises()
+    public async Task<IActionResult> GetExercise(int id)
     {
       var currentUserId = int.Parse(User.Identity.Name);
-      var model = _db.Exercise.GetAllExercisesForUser(currentUserId);
+      return Ok(await _db.Exercise.GetExerciseAsync(id));
+    }
+    [HttpGet("exercises")]
+    public async Task<IActionResult> GetExercises()
+    {
+      var currentUserId = int.Parse(User.Identity.Name);
+      var model = await _db.Exercise.GetExercisesAsync(currentUserId);
+      return Ok(model);
+    }
+    [HttpGet("exercises/{muscle}")]
+    public async Task<IActionResult> GetExercisesByMuscleGroup(string muscle)
+    {
+      var currentUserId = int.Parse(User.Identity.Name);
+      var model = await _db.Exercise.GetExercisesByMuscleAsync(currentUserId, muscle);
       return Ok(model);
     }
     [HttpPost("exercises")]
@@ -160,19 +170,20 @@ namespace BodyJournalAPI.Controllers
     #region Workouts
 
     [HttpGet("workouts/{id}")]
-    public IActionResult GetWorkout(int id)
+    public async Task<IActionResult> GetWorkout(int id)
     {
-      Workout model = _db.Workout.GetWorkout(id);
+      var currentUserId = int.Parse(User.Identity.Name);
+      Workout model = await _db.Workout.GetWorkoutAsync(id);
       ViewWorkout workout = _mapper.Map<ViewWorkout>(model);
       workout.Exercises = _mapper.Map<IEnumerable<ViewExercise>>(workout.Exercises);
       return Ok(workout);
     }
 
     [HttpGet("workouts")]
-    public IActionResult GetWorkouts()
+    public async Task<IActionResult> GetWorkouts()
     {
       var currentUserId = int.Parse(User.Identity.Name);
-      var model = _db.Workout.GetAllWorkoutsForUser(currentUserId);
+      var model = await _db.Workout.GetWorkoutsAsync(currentUserId);
       return Ok(model);
     }
     [HttpPost("workouts")]
@@ -201,14 +212,16 @@ namespace BodyJournalAPI.Controllers
     #region Biometric
 
     [HttpGet("biometrics/{id}")]
-    public IActionResult GetBiometric(int id)
+    public async Task<IActionResult> GetBiometric(int id)
     {
-      return Ok(_db.Biometric.GetBiometric(id));
+      var currentUserId = int.Parse(User.Identity.Name);
+      return Ok(await _db.Biometric.GetBiometricAsync(id));
     }
     [HttpGet("biometrics")]
-    public IActionResult GetBiometrics()
+    public async Task<IActionResult> GetBiometrics()
     {
-      return Ok(_db.Biometric.GetBiometrics());
+      var currentUserId = int.Parse(User.Identity.Name);
+      return Ok(await _db.Biometric.GetBiometricsAsync(currentUserId));
     }
     [HttpPost("biometrics/{id}")]
     public void CreateBiometric([FromForm] Biometric model)
@@ -235,14 +248,16 @@ namespace BodyJournalAPI.Controllers
 
     #region MuscleGroupFatigue
     [HttpGet("musclefatigue/{id}")]
-    public IActionResult GetMuscleGroupFatigue(int Id)
+    public async Task<IActionResult> GetMuscleGroupFatigue(int Id)
     {
-      return Ok(_db.MuscleGroupFatigue.GetMuscleGroupFatigue(Id));
+      var currentUserId = int.Parse(User.Identity.Name);
+      return Ok(await _db.MuscleGroupFatigue.GetMuscleGroupFatigueAsync(Id));
     }
     [HttpGet("musclefatigue")]
-    public IActionResult GetMuscleGroupFatigues()
+    public async Task<IActionResult> GetMuscleGroupFatigues()
     {
-      return Ok(_db.MuscleGroupFatigue.GetMuscleGroupFatigues());
+      var currentUserId = int.Parse(User.Identity.Name);
+      return Ok(await _db.MuscleGroupFatigue.GetMuscleGroupFatiguesAsync());
     }
     [HttpPost("musclefatigue")]
     public void CreateMuscleGroupFatigue([FromForm] MuscleGroupFatigue model)

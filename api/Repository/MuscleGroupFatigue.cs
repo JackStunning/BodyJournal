@@ -2,7 +2,9 @@ using BodyJournalAPI.Contracts;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Helpers;
 using System.Linq;
-
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 namespace BodyJournalAPI.Repository
 {
   public class MuscleGroupFatigueRepository : RepositoryBase<MuscleGroupFatigue>,
@@ -12,14 +14,14 @@ namespace BodyJournalAPI.Repository
     {
     }
 
-    public MuscleGroupFatigue GetMuscleGroupFatigue(int id)
+    public async Task<MuscleGroupFatigue> GetMuscleGroupFatigueAsync(int id)
     {
-      return FindByCondition(entry => entry.Id == id).SingleOrDefault();
+      return await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
     }
 
-    public IQueryable<MuscleGroupFatigue> GetMuscleGroupFatigues()
+    public async Task<IEnumerable<MuscleGroupFatigue>> GetMuscleGroupFatiguesAsync()
     {
-      return FindAll();
+      return await FindAll().ToListAsync();
     }
 
     public void CreateMuscleGroupFatigue(MuscleGroupFatigue model)
@@ -29,15 +31,15 @@ namespace BodyJournalAPI.Repository
 
     public void UpdateMuscleGroupFatigue(int id, MuscleGroupFatigue update)
     {
-      var model = GetMuscleGroupFatigue(id);
+      var model = GetMuscleGroupFatigueAsync(id);
       if (model == null)
         throw new System.Exception($"No MuscleGroupFatigue");
       Update(update);
     }
 
-    public void DeleteMuscleGroupFatigue(int id)
+    public async void DeleteMuscleGroupFatigue(int id)
     {
-      var model = GetMuscleGroupFatigue(id);
+      MuscleGroupFatigue model = await GetMuscleGroupFatigueAsync(id);
       if (model != null)
         Delete(model);
     }

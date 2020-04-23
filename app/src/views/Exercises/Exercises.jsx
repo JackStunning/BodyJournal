@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { exerciseActions } from "../../actions";
+import ExerciseHeader from "./ExerciseHeader";
+import PropTypes from "prop-types";
+import { ExerciseList } from "./ExerciseList";
 
 function Exercises() {
   const exercises = useSelector((state) => state.exercises);
@@ -10,95 +13,28 @@ function Exercises() {
     dispatch(exerciseActions.getExercises());
   }, []);
 
+  const chest = ExerciseList(exercises, "Chest");
+  const back = ExerciseList(exercises, "Back");
+  const shoulders = ExerciseList(exercises, "Shoulders");
+  const arms = ExerciseList(exercises, "Arms");
+  const abs = ExerciseList(exercises, "Abs");
+  const legs = ExerciseList(exercises, "Legs");
+  const exer = [chest, back, shoulders, arms, abs, legs];
+  const [exerciseList, setExerciseList] = useState(null);
+
+  const handle = (f) => {
+    setExerciseList(exer[f]);
+  };
   return (
-    <div>
-      <h1>Chest exercises</h1>
-      <div>
-        {exercises.items && (
-          <ul>
-            {exercises.items
-              .filter((exercise) => {
-                return exercise.muscleGroup === "Chest";
-              })
-              .map((chestExercise, index) => (
-                <li key={chestExercise.id}>
-                  {chestExercise.name}
-                  {chestExercise.muscleGroup}
-                </li>
-              ))}
-          </ul>
-        )}
-      </div>
-      <h1>Back exercises</h1>
-      <div>
-        {exercises.items && (
-          <ul>
-            {exercises.items
-              .filter((exercise) => {
-                return exercise.muscleGroup === "Back";
-              })
-              .map((backExercise, index) => (
-                <li key={backExercise.id}>
-                  {backExercise.name}
-                  {backExercise.muscleGroup}
-                </li>
-              ))}
-          </ul>
-        )}
-      </div>
-      <h1>Shoulder exercises</h1>
-      <div>
-        {exercises.items && (
-          <ul>
-            {exercises.items
-              .filter((exercise) => {
-                return exercise.muscleGroup === "Shoulders";
-              })
-              .map((shoulderExercise, index) => (
-                <li key={shoulderExercise.id}>
-                  {shoulderExercise.name}
-                  {shoulderExercise.muscleGroup}
-                </li>
-              ))}
-          </ul>
-        )}
-      </div>
-      <h1>Arm exercises</h1>
-      <div>
-        {exercises.items && (
-          <ul>
-            {exercises.items
-              .filter((exercise) => {
-                return exercise.muscleGroup === "Arms";
-              })
-              .map((armExercise, index) => (
-                <li key={armExercise.id}>
-                  {armExercise.name}
-                  {armExercise.muscleGroup}
-                </li>
-              ))}
-          </ul>
-        )}
-      </div>
-      <h1>Ab exercises</h1>
-      <div>
-        {exercises.items && (
-          <ul>
-            {exercises.items
-              .filter((exercise) => {
-                return exercise.muscleGroup === "Abs";
-              })
-              .map((absExercise, index) => (
-                <li key={absExercise.id}>
-                  {absExercise.name}
-                  {absExercise.muscleGroup}
-                </li>
-              ))}
-          </ul>
-        )}
-      </div>
-    </div>
+    <React.Fragment>
+      <ExerciseHeader onShowingExercises={handle}></ExerciseHeader>
+      {exerciseList}
+    </React.Fragment>
   );
 }
+
+Exercises.propTypes = {
+  exercises: PropTypes.array,
+};
 
 export { Exercises };

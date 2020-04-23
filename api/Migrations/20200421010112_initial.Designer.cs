@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BodyJournalApi.Migrations
 {
     [DbContext(typeof(BodyJournalContext))]
-    [Migration("20200411225322_initial")]
+    [Migration("20200421010112_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -445,26 +445,14 @@ namespace BodyJournalApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("AbsFatigue")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ArmsFatigue")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BackFatigue")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ChestFatigue")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CurrentTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("LegsFatigue")
+                    b.Property<int>("Fatigue")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShouldersFatigue")
-                        .HasColumnType("int");
+                    b.Property<string>("MuscleGroup")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("WorkoutId")
                         .HasColumnType("int");
@@ -477,61 +465,41 @@ namespace BodyJournalApi.Migrations
                         new
                         {
                             Id = 1,
-                            AbsFatigue = 0,
-                            ArmsFatigue = 1,
-                            BackFatigue = 2,
-                            ChestFatigue = 4,
-                            CurrentTime = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(3020),
-                            LegsFatigue = 1,
-                            ShouldersFatigue = 1,
+                            CurrentTime = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(4883),
+                            Fatigue = 4,
+                            MuscleGroup = "Chest",
                             WorkoutId = 6
                         },
                         new
                         {
                             Id = 2,
-                            AbsFatigue = 0,
-                            ArmsFatigue = 1,
-                            BackFatigue = 1,
-                            ChestFatigue = 1,
-                            CurrentTime = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(3444),
-                            LegsFatigue = 1,
-                            ShouldersFatigue = 4,
+                            CurrentTime = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(5302),
+                            Fatigue = 4,
+                            MuscleGroup = "",
                             WorkoutId = 3
                         },
                         new
                         {
                             Id = 3,
-                            AbsFatigue = 0,
-                            ArmsFatigue = 3,
-                            BackFatigue = 3,
-                            ChestFatigue = 4,
-                            CurrentTime = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(3464),
-                            LegsFatigue = 3,
-                            ShouldersFatigue = 3,
+                            CurrentTime = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(5337),
+                            Fatigue = 3,
+                            MuscleGroup = "",
                             WorkoutId = 4
                         },
                         new
                         {
                             Id = 4,
-                            AbsFatigue = 0,
-                            ArmsFatigue = 3,
-                            BackFatigue = 1,
-                            ChestFatigue = 1,
-                            CurrentTime = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(3467),
-                            LegsFatigue = 2,
-                            ShouldersFatigue = 3,
+                            CurrentTime = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(5340),
+                            Fatigue = 4,
+                            MuscleGroup = "",
                             WorkoutId = 8
                         },
                         new
                         {
                             Id = 5,
-                            AbsFatigue = 0,
-                            ArmsFatigue = 3,
-                            BackFatigue = 5,
-                            ChestFatigue = 3,
-                            CurrentTime = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(3470),
-                            LegsFatigue = 3,
-                            ShouldersFatigue = 5,
+                            CurrentTime = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(5342),
+                            Fatigue = 4,
+                            MuscleGroup = "",
                             WorkoutId = 5
                         });
                 });
@@ -575,8 +543,8 @@ namespace BodyJournalApi.Migrations
                             FirstName = "a",
                             LastName = "a",
                             Password = "a",
-                            PasswordHash = new byte[] { 213, 230, 46, 198, 77, 232, 89, 31, 30, 215, 237, 65, 45, 140, 199, 180, 38, 24, 25, 123, 72, 150, 123, 127, 152, 159, 229, 148, 58, 145, 154, 239, 83, 22, 6, 180, 191, 104, 219, 31, 41, 53, 45, 92, 118, 232, 98, 137, 65, 191, 248, 139, 1, 49, 28, 221, 152, 221, 71, 62, 250, 142, 86, 53 },
-                            PasswordSalt = new byte[] { 152, 226, 225, 155, 182, 95, 252, 27, 171, 17, 195, 99, 234, 159, 225, 249, 121, 125, 70, 103, 37, 121, 172, 233, 166, 226, 155, 217, 197, 45, 161, 117, 207, 127, 223, 93, 73, 194, 176, 30, 75, 165, 223, 130, 12, 172, 153, 176, 2, 148, 210, 95, 206, 133, 225, 243, 39, 150, 86, 3, 226, 44, 245, 73, 18, 27, 186, 178, 241, 49, 78, 178, 153, 32, 71, 159, 196, 125, 221, 17, 71, 47, 10, 64, 212, 197, 122, 157, 92, 187, 237, 43, 102, 103, 251, 218, 135, 142, 156, 218, 16, 69, 96, 172, 204, 34, 211, 204, 111, 72, 81, 27, 160, 143, 166, 88, 72, 59, 188, 199, 227, 51, 156, 219, 202, 105, 140, 75 },
+                            PasswordHash = new byte[] { 131, 185, 200, 35, 150, 226, 72, 63, 14, 215, 73, 94, 245, 246, 245, 61, 208, 194, 163, 239, 114, 152, 57, 55, 40, 173, 128, 180, 76, 190, 21, 142, 177, 214, 138, 189, 179, 253, 217, 209, 223, 89, 39, 33, 78, 95, 135, 117, 88, 167, 60, 198, 100, 62, 253, 110, 227, 44, 59, 241, 160, 235, 236, 138 },
+                            PasswordSalt = new byte[] { 183, 163, 86, 0, 74, 195, 179, 237, 221, 195, 189, 61, 205, 238, 67, 116, 237, 220, 221, 196, 237, 115, 41, 82, 14, 96, 194, 57, 14, 151, 173, 197, 200, 114, 32, 179, 44, 235, 59, 155, 35, 82, 3, 93, 108, 81, 51, 207, 226, 129, 204, 136, 112, 244, 226, 229, 108, 24, 157, 70, 170, 61, 178, 83, 5, 30, 231, 68, 24, 254, 64, 43, 223, 173, 77, 89, 228, 124, 20, 124, 207, 142, 162, 200, 183, 7, 105, 155, 165, 60, 2, 241, 26, 90, 83, 129, 158, 36, 215, 162, 56, 227, 251, 53, 143, 190, 0, 86, 228, 107, 115, 182, 98, 53, 12, 21, 1, 192, 45, 128, 227, 6, 247, 59, 87, 2, 237, 98 },
                             UserName = "a"
                         },
                         new
@@ -586,8 +554,8 @@ namespace BodyJournalApi.Migrations
                             FirstName = "b",
                             LastName = "b",
                             Password = "b",
-                            PasswordHash = new byte[] { 144, 135, 101, 128, 23, 168, 238, 94, 254, 128, 202, 91, 63, 59, 92, 138, 72, 85, 236, 55, 14, 53, 107, 117, 192, 243, 79, 136, 181, 4, 26, 12, 95, 205, 232, 66, 218, 73, 201, 161, 107, 217, 113, 81, 236, 33, 135, 160, 192, 195, 118, 178, 7, 83, 174, 20, 222, 115, 250, 222, 184, 197, 21, 211 },
-                            PasswordSalt = new byte[] { 152, 226, 225, 155, 182, 95, 252, 27, 171, 17, 195, 99, 234, 159, 225, 249, 121, 125, 70, 103, 37, 121, 172, 233, 166, 226, 155, 217, 197, 45, 161, 117, 207, 127, 223, 93, 73, 194, 176, 30, 75, 165, 223, 130, 12, 172, 153, 176, 2, 148, 210, 95, 206, 133, 225, 243, 39, 150, 86, 3, 226, 44, 245, 73, 18, 27, 186, 178, 241, 49, 78, 178, 153, 32, 71, 159, 196, 125, 221, 17, 71, 47, 10, 64, 212, 197, 122, 157, 92, 187, 237, 43, 102, 103, 251, 218, 135, 142, 156, 218, 16, 69, 96, 172, 204, 34, 211, 204, 111, 72, 81, 27, 160, 143, 166, 88, 72, 59, 188, 199, 227, 51, 156, 219, 202, 105, 140, 75 },
+                            PasswordHash = new byte[] { 16, 75, 133, 96, 3, 126, 63, 191, 212, 99, 146, 119, 2, 248, 100, 152, 196, 132, 57, 110, 208, 12, 159, 22, 210, 205, 3, 211, 31, 183, 106, 129, 93, 70, 210, 152, 254, 115, 135, 42, 84, 174, 181, 19, 108, 109, 37, 14, 63, 134, 127, 250, 253, 156, 163, 164, 132, 106, 147, 186, 14, 92, 80, 22 },
+                            PasswordSalt = new byte[] { 183, 163, 86, 0, 74, 195, 179, 237, 221, 195, 189, 61, 205, 238, 67, 116, 237, 220, 221, 196, 237, 115, 41, 82, 14, 96, 194, 57, 14, 151, 173, 197, 200, 114, 32, 179, 44, 235, 59, 155, 35, 82, 3, 93, 108, 81, 51, 207, 226, 129, 204, 136, 112, 244, 226, 229, 108, 24, 157, 70, 170, 61, 178, 83, 5, 30, 231, 68, 24, 254, 64, 43, 223, 173, 77, 89, 228, 124, 20, 124, 207, 142, 162, 200, 183, 7, 105, 155, 165, 60, 2, 241, 26, 90, 83, 129, 158, 36, 215, 162, 56, 227, 251, 53, 143, 190, 0, 86, 228, 107, 115, 182, 98, 53, 12, 21, 1, 192, 45, 128, 227, 6, 247, 59, 87, 2, 237, 98 },
                             UserName = "b"
                         });
                 });
@@ -624,7 +592,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 7,
                             Name = "Upper body day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 95, DateTimeKind.Local).AddTicks(1644),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 395, DateTimeKind.Local).AddTicks(3897),
                             UserId = 1
                         },
                         new
@@ -633,7 +601,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 3,
                             Name = "Lower body day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(456),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(2910),
                             UserId = 1
                         },
                         new
@@ -642,7 +610,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 7,
                             Name = "Shoulder day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(506),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(2958),
                             UserId = 1
                         },
                         new
@@ -651,7 +619,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 6,
                             Name = "Back day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(512),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(2963),
                             UserId = 1
                         },
                         new
@@ -660,7 +628,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 4,
                             Name = "Abs day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(514),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(2966),
                             UserId = 1
                         },
                         new
@@ -669,7 +637,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 8,
                             Name = "Chest day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(517),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(2968),
                             UserId = 1
                         },
                         new
@@ -678,7 +646,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 8,
                             Name = "Arms day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(520),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(2971),
                             UserId = 2
                         },
                         new
@@ -687,7 +655,7 @@ namespace BodyJournalApi.Migrations
                             IntensityScore = 6,
                             Name = "Legs day",
                             Satisfaction = 5,
-                            TimeOfWorkout = new DateTime(2020, 4, 11, 15, 53, 22, 97, DateTimeKind.Local).AddTicks(523),
+                            TimeOfWorkout = new DateTime(2020, 4, 20, 18, 1, 12, 397, DateTimeKind.Local).AddTicks(2973),
                             UserId = 2
                         });
                 });

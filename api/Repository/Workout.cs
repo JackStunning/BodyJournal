@@ -3,7 +3,8 @@ using BodyJournalAPI.Entities;
 using BodyJournalAPI.Helpers;
 using System.Linq;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 namespace BodyJournalAPI.Repository
 {
   public class WorkoutRepository : RepositoryBase<Workout>,
@@ -12,19 +13,19 @@ namespace BodyJournalAPI.Repository
     public WorkoutRepository(BodyJournalContext bodyJournalContext) : base(bodyJournalContext)
     {
     }
-    public Workout GetWorkout(int id)
+    public async Task<Workout> GetWorkoutAsync(int id)
     {
-      Workout model = FindByCondition(entry => entry.Id == id).SingleOrDefault();
+      Workout model = await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
 
-      IEnumerable<ExerciseWorkout> exerciseWorkouts = this.BodyJournalContext.ExerciseWorkouts.Where(entry => entry.WorkoutId == id);
+      IEnumerable<ExerciseWorkout> exerciseWorkouts = await this.BodyJournalContext.ExerciseWorkouts.Where(entry => entry.WorkoutId == id).ToListAsync();
 
-      IEnumerable<Exercise> exercises = (from e in this.BodyJournalContext.Exercises join ew in exerciseWorkouts on e.Id equals ew.ExerciseId select e);
+      IEnumerable<Exercise> exercises = await (from e in this.BodyJournalContext.Exercises join ew in exerciseWorkouts on e.Id equals ew.ExerciseId select e).ToListAsync();
 
       return model;
     }
-    public IQueryable<Workout> GetAllWorkoutsForUser(int id)
+    public async Task<IEnumerable<Workout>> GetWorkoutsAsync(int id)
     {
-      return FindByCondition(entry => entry.UserId == id);
+      return await FindByCondition(entry => entry.UserId == id).ToListAsync();
     }
 
     public void CreateWorkout(Workout model)
@@ -34,15 +35,15 @@ namespace BodyJournalAPI.Repository
 
     public void UpdateWorkout(int id, Workout update)
     {
-      var model = GetWorkout(id);
+      var model = GetWorkoutAsync(id);
       if (model == null)
         throw new System.Exception($"No Workout");
       Update(update);
     }
 
-    public void DeleteWorkout(int id)
+    public async void DeleteWorkout(int id)
     {
-      var model = GetWorkout(id);
+      Workout model = await GetWorkoutAsync(id);
       if (model != null)
         Delete(model);
     }

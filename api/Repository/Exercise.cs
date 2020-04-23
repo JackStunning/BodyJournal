@@ -1,8 +1,10 @@
 using BodyJournalAPI.Contracts;
 using BodyJournalAPI.Entities;
 using BodyJournalAPI.Helpers;
+using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 namespace BodyJournalAPI.Repository
 {
   public class ExerciseRepository : RepositoryBase<Exercise>,
@@ -12,21 +14,20 @@ namespace BodyJournalAPI.Repository
     {
     }
 
-    public Exercise GetExercise(int id)
+    public async Task<Exercise> GetExerciseAsync(int id)
     {
-      return FindByCondition(entry => entry.Id == id).SingleOrDefault();
+      return await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
     }
 
-    public IQueryable<Exercise> GetExercises(int id)
+    public async Task<IEnumerable<Exercise>> GetExercisesAsync(int id)
     {
-      return FindByCondition(x => x.UserId == id);
+      return await FindByCondition(x => x.UserId == id).ToListAsync();
     }
 
-    public IQueryable<Exercise> GetAllExercisesForUser(int id)
+    public async Task<IEnumerable<Exercise>> GetExercisesByMuscleAsync(int id, string muscle)
     {
-      return FindByCondition(entry => entry.UserId == id);
+      return await FindByCondition(x => x.UserId == id && x.MuscleGroup == muscle).ToListAsync();
     }
-
     public void CreateExercise(Exercise model)
     {
       Create(model);
@@ -34,15 +35,15 @@ namespace BodyJournalAPI.Repository
 
     public void UpdateExercise(int id, Exercise update)
     {
-      var model = GetExercise(id);
+      var model = GetExerciseAsync(id);
       if (model == null)
         throw new System.Exception($"No Exercise");
       Update(update);
     }
 
-    public void DeleteExercise(int id)
+    public async void DeleteExercise(int id)
     {
-      var model = GetExercise(id);
+      Exercise model = await GetExerciseAsync(id);
       if (model != null)
         Delete(model);
     }

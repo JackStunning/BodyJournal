@@ -1,10 +1,10 @@
 using BodyJournalAPI.Entities;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 namespace BodyJournalAPI.Contracts
 {
   public interface IExerciseWorkoutRepository : IRepositoryBase<ExerciseWorkout>
   {
-    IEnumerable<ExerciseWorkout> GetExerciseWorkouts(int id);
+    Task<IEnumerable<ExerciseWorkout>> GetExerciseWorkoutsAsync(int id);
   }
 }

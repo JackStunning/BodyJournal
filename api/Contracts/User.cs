@@ -1,6 +1,6 @@
 using BodyJournalAPI.Entities;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 namespace BodyJournalAPI.Contracts
 {
   public interface IUserRepository : IRepositoryBase<User>

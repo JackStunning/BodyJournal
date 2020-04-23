@@ -5,6 +5,7 @@ import { handleResponse } from "../helpers";
 export const exerciseService = {
   getExercise,
   getExercises,
+  getExercisesByMuscle,
   createExercise,
   updateExercise,
   deleteExercise,
@@ -30,6 +31,18 @@ function getExercises() {
   return fetch(`${config.apiUrl}/users/exercises`, requestOptions).then(
     handleResponse
   );
+}
+
+function getExercisesByMuscle(muscle) {
+  const requestOptions = {
+    method: "GET",
+    headers: authHeader(),
+  };
+
+  return fetch(
+    `${config.apiUrl}/users/exercises/${muscle}`,
+    requestOptions
+  ).then(handleResponse);
 }
 
 function createExercise(exercise) {

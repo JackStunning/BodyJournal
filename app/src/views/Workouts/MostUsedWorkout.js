@@ -5,11 +5,8 @@ import { workoutActions } from "../../actions";
 
 function Muscles() {}
 
-function muscleInformation() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(workoutActions.getWorkouts());
-  }, []);
+function MostUsedWorkouts(props) {
+  props.forEach((element) => {});
   return (
     <div class="w3-quarter">
       <div class="w3-container w3-blue w3-padding-16">
