@@ -28,19 +28,12 @@ A personalized fitness tracker that allows you to track your workouts, muscle fa
 - \$dotnet watch run
 - Call the api using Postman or by running the web application
 
-<details>
-  <summary>Click to expand!</summary>
-API
-| HTTP Method | URL Path | Purpose |
-| :--------- | :------- | :------- |
-
-| GET | /exercises | Retrieve all exercises |
-
-| GET | /exercise/{id} | Retrieve an exercise by it's id |
-
-| GET | /exercise/{name} | Retrieve a list of exercises by name |
-
-</details>
+| HTTP Method | URL Path        | Purpose                         |
+| :---------- | :-------------- | :------------------------------ |
+| GET         | /exercises      | Retrieve a list of exercises    |
+| GET         | /exercises/{id} | Retrieve an exercise by it's id |
+| GET         | /workouts       | Retrieve a list of workouts     |
+| GET         | /exercise/{id}  | Retrieve an exercise by it's id |
 
 ## Known Bugs
 
