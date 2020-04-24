@@ -8,8 +8,6 @@
 
 A personalized fitness tracker that allows you to track your workouts, muscle fatigue and recovery.
 
-## Specs
-
 ### Installation and Configuration:
 
 - Download .NET application version 3.1
