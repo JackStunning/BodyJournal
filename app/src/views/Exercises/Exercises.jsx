@@ -3,10 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { exerciseActions } from "../../actions";
 import ExerciseHeader from "./ExerciseHeader";
 import PropTypes from "prop-types";
-import { ExerciseList } from "./ExerciseList";
-import { Grid } from "@material-ui/core";
+import ExerciseList from "./ExerciseList";
+import { Grid, makeStyles } from "@material-ui/core";
 
+const useStyles = makeStyles((theme) => ({
+  mainContent: {
+    marginTop: "200",
+    justifyContent: "center",
+    borderColor: "red",
+    width: "100%",
+  },
+}));
 function Exercises() {
+  const classes = useStyles;
   const exercises = useSelector((state) => state.exercises);
   const dispatch = useDispatch();
 
@@ -27,10 +36,12 @@ function Exercises() {
     setExerciseList(exer[f]);
   };
   return (
-    <React.Fragment>
-      <ExerciseHeader onShowingExercises={handle} />
-      {exerciseList}
-    </React.Fragment>
+    <Grid container className={classes.mainContent}>
+      <Grid item xs={12}>
+        <ExerciseHeader onShowingExercises={handle} />
+        {exerciseList}
+      </Grid>
+    </Grid>
   );
 }
 

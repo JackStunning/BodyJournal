@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+const Exercise = ({ match, location }) => {
+  const {
+    params: { id },
+  } = match;
 
-import PropTypes from "prop-types";
+  const exercise = useSelector((state) => state.exercise);
+  const dispatch = useDispatch();
 
-export default function Exercise(props) {
+  useEffect(() => {
+    dispatch(exerciseActions.getExercise(id));
+  }, []);
   return (
     <React.Fragment>
-      <h4>
-        {props.name}&nbsp;{props.weight}&nbsp;{props.reps}&nbsp;{props.sets}
-        &nbsp;{props.Intensity}
-      </h4>
+      <p>{exercise.name}</p>
+      <p>{exercise.weight}</p>
+      <p>{exercise.reps}</p>
+      <p>{exercise.sets}</p>
+      <p>{exercise.intensity}</p>
     </React.Fragment>
   );
-}
-
-Exercise.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  weight: PropTypes.number,
-  sets: PropTypes.number,
-  reps: PropTypes.number,
-  intensity: PropTypes.number,
 };
+export { Exercise };

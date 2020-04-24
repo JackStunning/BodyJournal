@@ -15,13 +15,6 @@ export default function Workout(props) {
             <TableCell component="th" scope="row">
               Exercises
             </TableCell>
-            key={exercise.name}
-            id={exercise.id}
-            name={exercise.name}
-            weight={exercise.weight}
-            reps={exercise.reps}
-            sets={exercise.sets}
-            intensity={exercise.intensity}
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Weight</TableCell>
             <TableCell align="right">Reps</TableCell>
