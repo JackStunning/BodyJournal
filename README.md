@@ -6,7 +6,7 @@
 
 ## Description
 
-An API that allows users to GET and POST reviews about various state and national parks
+A personalized fitness tracker that allows you to track your workouts, muscle fatigue and recovery.
 
 ## Specs
 
