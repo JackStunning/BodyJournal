@@ -5,10 +5,12 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Table from "@material-ui/core/Table";
-import { Link, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { history } from "../../helpers";
 
-function ExerciseList(props, muscle) {
-  const exercises = props;
+export const ExerciseList = (props, muscle) => {
+  const exercises = { ...props };
   return (
     <React.Fragment>
       <h1>{muscle}</h1>
@@ -25,30 +27,30 @@ function ExerciseList(props, muscle) {
               <TableCell align="right">Intensity</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {exercises.items &&
-              exercises.items
-                .filter((exercise) => {
-                  return exercise.muscleGroup === muscle;
-                })
-                .map((exercise) => (
-                  <Link to={`/exercises/${exercise.id}`}>
+          <Router history={history}>
+            <TableBody>
+              {exercises.items &&
+                exercises.items
+                  .filter((exercise) => {
+                    return exercise.muscleGroup === muscle;
+                  })
+                  .map((exercise) => (
                     <TableRow key={exercise.id}>
                       <TableCell component="th" scope="row">
-                        {exercise.name}
+                        <Link to={`/exercises/${exercise.id}`}>
+                          {exercise.name}
+                        </Link>
                       </TableCell>
                       <TableCell align="right">{exercise.weight}</TableCell>
                       <TableCell align="right">{exercise.reps}</TableCell>
                       <TableCell align="right">{exercise.sets}</TableCell>
                       <TableCell align="right">{exercise.intensity}</TableCell>
                     </TableRow>
-                  </Link>
-                ))}
-          </TableBody>
+                  ))}
+            </TableBody>
+          </Router>
         </Table>
       </TableContainer>
     </React.Fragment>
   );
-}
-
-export default ExerciseList;
+};

@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-
 import { authentication } from "./authentication-reducer";
 import { registration } from "./registration-reducer";
 import { workouts } from "./workouts-reducer";

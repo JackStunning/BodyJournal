@@ -7,12 +7,14 @@ import { alertActions } from "../actions";
 import { UserRoute } from "../components/UserRoute/UserRoute";
 import { Home } from "../views/Home";
 import Paper from "@material-ui/core/Paper";
-import { Exercises } from "../views/Exercises";
-import { Workouts } from "../views/Workouts";
+import { Exercises } from "../views/Exercises/Index/Exercises";
+import { Workouts } from "../views/Workouts/Index/Workouts";
+import { Workout } from "../components/Workouts/Workout";
 import { Login } from "../views/Login";
 import { Register } from "../views/Register";
-import { Exercise } from "../views/Exercises/Exercise";
+import { ExerciseDetails } from "../views/Exercises/ExerciseDetails";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
+
 const useStyles = makeStyles((theme) => ({
   center: {
     justifyContent: "center",
@@ -58,8 +60,13 @@ function App() {
             <Switch>
               <UserRoute exact path="/" component={Home} />
               <UserRoute exact path="/exercises" component={Exercises} />
-              <UserRoute exact path="/exercises/:id" component={Exercise} />
+              <UserRoute
+                exact
+                path="/exercises/:id"
+                component={ExerciseDetails}
+              />
               <UserRoute exact path="/workouts" component={Workouts} />
+              <UserRoute exact path="/workouts/:id" component={Workout} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Redirect from="*" to="/" />

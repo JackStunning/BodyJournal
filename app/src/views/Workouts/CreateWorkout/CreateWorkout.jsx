@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { workoutActions } from "../../actions";
+import { workoutActions } from "../../../actions";
 
 function CreateWorkout() {
   const [workout, setworkout] = useState({

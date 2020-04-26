@@ -137,13 +137,13 @@ namespace BodyJournalAPI.Controllers
       var model = await _db.Exercise.GetExercisesAsync(currentUserId);
       return Ok(model);
     }
-    [HttpGet("exercises/{muscle}")]
-    public async Task<IActionResult> GetExercisesByMuscleGroup(string muscle)
-    {
-      var currentUserId = int.Parse(User.Identity.Name);
-      var model = await _db.Exercise.GetExercisesByMuscleAsync(currentUserId, muscle);
-      return Ok(model);
-    }
+    // [HttpGet("exercises/{muscle}")]
+    // public async Task<IActionResult> GetExercisesByMuscleGroup(string muscle)
+    // {
+    //   var currentUserId = int.Parse(User.Identity.Name);
+    //   var model = await _db.Exercise.GetExercisesByMuscleAsync(currentUserId, muscle);
+    //   return Ok(model);
+    // }
     [HttpPost("exercises")]
     public void CreateExercise([FromForm] Exercise model)
     {

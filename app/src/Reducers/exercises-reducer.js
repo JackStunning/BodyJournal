@@ -14,6 +14,18 @@ export function exercises(state = {}, action) {
       return {
         error: action.error,
       };
+    case exerciseConstants.GET_REQUEST:
+      return {
+        loading: true,
+      };
+    case exerciseConstants.GET_SUCCESS:
+      return {
+        item: action.exercise,
+      };
+    case exerciseConstants.GET_FAILURE:
+      return {
+        error: action.error,
+      };
     case exerciseConstants.GETBYMUSCLE_REQUEST:
       return {
         loading: true,
@@ -26,7 +38,6 @@ export function exercises(state = {}, action) {
       return {
         error: action.error,
       };
-
     case exerciseConstants.CREATE_REQUEST:
       return {
         creating: true,
@@ -35,7 +46,6 @@ export function exercises(state = {}, action) {
       return {};
     case exerciseConstants.CREATE_FAILURE:
       return {};
-
     case exerciseConstants.DELETE_REQUEST:
       return {
         ...state,

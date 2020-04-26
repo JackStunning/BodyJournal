@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { exerciseActions } from "../../actions";
-import ExerciseHeader from "./ExerciseHeader";
+import { exerciseActions } from "../../../actions";
+import { ExerciseHeader } from "../../../components/Exercises/ExerciseHeader";
 import PropTypes from "prop-types";
-import ExerciseList from "./ExerciseList";
+import { ExerciseList } from "../../../components/Exercises/ExerciseList";
 import { Grid, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
 }));
-function Exercises() {
+export const Exercises = () => {
   const classes = useStyles;
   const exercises = useSelector((state) => state.exercises);
   const dispatch = useDispatch();
@@ -32,21 +32,19 @@ function Exercises() {
   const exer = [chest, back, shoulders, arms, abs, legs];
   const [exerciseList, setExerciseList] = useState(null);
 
-  const handle = (f) => {
-    setExerciseList(exer[f]);
+  const handleShowingExercises = (muscle) => {
+    setExerciseList(exer[muscle]);
   };
   return (
     <Grid container className={classes.mainContent}>
       <Grid item xs={12}>
-        <ExerciseHeader onShowingExercises={handle} />
+        <ExerciseHeader onShowingExercises={handleShowingExercises} />
         {exerciseList}
       </Grid>
     </Grid>
   );
-}
+};
 
 Exercises.propTypes = {
   exercises: PropTypes.array,
 };
-
-export { Exercises };

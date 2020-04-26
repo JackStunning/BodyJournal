@@ -13,6 +13,7 @@ export const exerciseActions = {
 };
 
 function getExercise(id) {
+  console.log("In get exercise " + id);
   return (dispatch) => {
     dispatch(request(id));
 
@@ -26,10 +27,10 @@ function getExercise(id) {
     return { type: exerciseConstants.GET_REQUEST, id };
   }
   function success(exercise) {
-    return { type: userConstants.GET_SUCCESS, exercise };
+    return { type: exerciseConstants.GET_SUCCESS, exercise };
   }
   function failure(id, error) {
-    return { type: userConstants.GET_FAILURE, id, error };
+    return { type: exerciseConstants.GET_FAILURE, id, error };
   }
 }
 
@@ -53,27 +54,6 @@ function getExercises() {
     return { type: exerciseConstants.GETALL_FAILURE, error };
   }
 }
-
-// function getExercisesByMuscle(muscle) {
-//   return (dispatch) => {
-//     dispatch(request(muscle));
-
-//     exerciseService.getExercisesByMuscle(muscle).then(
-//       (exercises) => dispatch(success(exercises)),
-//       (error) => dispatch(failure(error.toString()))
-//     );
-//   };
-
-//   function request(muscle) {
-//     return { type: exerciseConstants.GETALL_REQUEST, muscle };
-//   }
-//   function success(exercises) {
-//     return { type: exerciseConstants.GETALL_SUCCESS, exercises };
-//   }
-//   function failure(error) {
-//     return { type: exerciseConstants.GETALL_FAILURE, error };
-//   }
-// }
 
 function createExercise(exercise) {
   return (dispatch) => {

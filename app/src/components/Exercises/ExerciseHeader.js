@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ExerciseHeader(props) {
+export const ExerciseHeader = (props) => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -55,11 +55,9 @@ function ExerciseHeader(props) {
       </Container>
     </React.Fragment>
   );
-}
+};
 
 ExerciseHeader.propTypes = {
   onShowingExercises: PropTypes.func,
   ChestExercises: PropTypes.func,
 };
-
-export default ExerciseHeader;

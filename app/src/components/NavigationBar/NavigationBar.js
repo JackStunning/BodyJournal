@@ -42,21 +42,28 @@ const NavigationBar = () => {
           </Grid>
           <Grid item xs={9}>
             <Toolbar>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <Typography variant="h6" className={classes.title}>
                   <Link className={classes.navLinks} to="/exercises">
                     Exercises
                   </Link>
                 </Typography>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <Typography variant="h6" className={classes.title}>
                   <Link className={classes.navLinks} to="/workouts">
                     Workouts
                   </Link>
                 </Typography>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
+                <Typography variant="h6" className={classes.title}>
+                  <Link className={classes.navLinks} to="/status">
+                    Status
+                  </Link>
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
                 <Typography variant="h6" className={classes.title}>
                   <Link className={classes.navLinks} to="/data">
                     Data

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { exerciseActions } from "../../actions";
+import { exerciseActions } from "../../../actions";
 
 function CreateExercise() {
   const [exercise, setExercise] = useState({
