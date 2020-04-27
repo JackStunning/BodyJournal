@@ -16,12 +16,12 @@ namespace BodyJournalAPI.Repository
 
     public async Task<Biometric> GetBiometricAsync(int id)
     {
-      return await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
+      return await FindByCondition(x => x.Id == id).SingleOrDefaultAsync();
     }
 
     public async Task<IEnumerable<Biometric>> GetBiometricsAsync(int id)
     {
-      return await FindByCondition(entry => entry.UserId == id).ToListAsync();
+      return await FindByCondition(x => x.UserId == id).ToListAsync();
     }
 
     public void CreateBiometric(Biometric model)

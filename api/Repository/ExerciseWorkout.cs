@@ -15,11 +15,11 @@ namespace BodyJournalAPI.Repository
     }
     public async Task<IEnumerable<ExerciseWorkout>> GetExerciseWorkoutsAsync(int id)
     {
-      return await FindByCondition(entry => entry.WorkoutId == id).ToListAsync();
+      return await FindByCondition(x => x.WorkoutId == id).ToListAsync();
     }
     public async Task<IEnumerable<ExerciseWorkout>> GetExerciseWorkoutAsync(int id)
     {
-      return await FindByCondition(entry => entry.WorkoutId == id).ToListAsync();
+      return await FindByCondition(x => x.WorkoutId == id).ToListAsync();
     }
   }
 }

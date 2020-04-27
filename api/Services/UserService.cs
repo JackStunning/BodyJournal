@@ -48,12 +48,10 @@ namespace BodyJournalAPI.Services
       if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
         return null;
 
-      Console.WriteLine("was authenticated!");
       return user;
     }
     public User CreateUser(User user, string password)
     {
-      Console.WriteLine("In createuser of user service. user: " + user.ToString());
       if (string.IsNullOrWhiteSpace(password))
         throw new Exception("Password is required");
 

@@ -137,17 +137,14 @@ namespace BodyJournalAPI.Controllers
       var model = await _db.Exercise.GetExercisesAsync(currentUserId);
       return Ok(model);
     }
-    // [HttpGet("exercises/{muscle}")]
-    // public async Task<IActionResult> GetExercisesByMuscleGroup(string muscle)
-    // {
-    //   var currentUserId = int.Parse(User.Identity.Name);
-    //   var model = await _db.Exercise.GetExercisesByMuscleAsync(currentUserId, muscle);
-    //   return Ok(model);
-    // }
+
     [HttpPost("exercises")]
-    public void CreateExercise([FromForm] Exercise model)
+    public void CreateExercise([FromBody] CreateExercise model)
     {
-      _db.Exercise.CreateExercise(model);
+      var currentUserId = int.Parse(User.Identity.Name);
+      Exercise entity = _mapper.Map<Exercise>(model);
+      entity.UserId = currentUserId;
+      _db.Exercise.CreateExercise(entity);
       _db.Save();
     }
     [HttpPut("exercises/{id}")]
@@ -173,10 +170,16 @@ namespace BodyJournalAPI.Controllers
     public async Task<IActionResult> GetWorkout(int id)
     {
       var currentUserId = int.Parse(User.Identity.Name);
-      Workout model = await _db.Workout.GetWorkoutAsync(id);
-      ViewWorkout workout = _mapper.Map<ViewWorkout>(model);
-      workout.Exercises = _mapper.Map<IEnumerable<ViewExercise>>(workout.Exercises);
-      return Ok(workout);
+      ViewWorkout model = _mapper.Map<ViewWorkout>(await _db.Workout.GetWorkoutAsync(id));
+
+      IEnumerable<ExerciseWorkout> exerciseWorkouts = await _db.ExerciseWorkout.GetExerciseWorkoutsAsync(id);
+
+      IEnumerable<Exercise> exercises = await _db.Exercise.GetExercisesAsync(currentUserId);
+      IEnumerable<Exercise> e = from ex in exercises join ew in exerciseWorkouts on ex.Id equals ew.ExerciseId select ex;
+
+      model.Exercises = _mapper.Map<IEnumerable<ViewExercise>>(e);
+
+      return Ok(model);
     }
 
     [HttpGet("workouts")]
@@ -247,25 +250,25 @@ namespace BodyJournalAPI.Controllers
     #endregion
 
     #region MuscleGroupFatigue
-    [HttpGet("musclefatigue/{id}")]
+    [HttpGet("musclefatigues/{id}")]
     public async Task<IActionResult> GetMuscleGroupFatigue(int Id)
     {
       var currentUserId = int.Parse(User.Identity.Name);
       return Ok(await _db.MuscleGroupFatigue.GetMuscleGroupFatigueAsync(Id));
     }
-    [HttpGet("musclefatigue")]
+    [HttpGet("musclefatigues")]
     public async Task<IActionResult> GetMuscleGroupFatigues()
     {
       var currentUserId = int.Parse(User.Identity.Name);
-      return Ok(await _db.MuscleGroupFatigue.GetMuscleGroupFatiguesAsync());
+      return Ok(await _db.MuscleGroupFatigue.GetMuscleGroupFatiguesAsync(currentUserId));
     }
-    [HttpPost("musclefatigue")]
+    [HttpPost("musclefatigues")]
     public void CreateMuscleGroupFatigue([FromForm] MuscleGroupFatigue model)
     {
       _db.MuscleGroupFatigue.CreateMuscleGroupFatigue(model);
       _db.Save();
     }
-    [HttpPut("musclefatigue/{id}")]
+    [HttpPut("musclefatigues/{id}")]
     public IActionResult UpdateMuscleGroupFatigue(int id, [FromBody] MuscleGroupFatigue model)
     {
       _db.MuscleGroupFatigue.UpdateMuscleGroupFatigue(id, model);
@@ -273,7 +276,7 @@ namespace BodyJournalAPI.Controllers
       return Ok();
     }
 
-    [HttpDelete("musclefatigue/{id}")]
+    [HttpDelete("musclefatigues/{id}")]
     public IActionResult DeleteMuscleGroupFatigue(int id)
     {
       _db.MuscleGroupFatigue.DeleteMuscleGroupFatigue(id);

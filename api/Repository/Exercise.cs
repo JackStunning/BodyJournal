@@ -16,17 +16,12 @@ namespace BodyJournalAPI.Repository
 
     public async Task<Exercise> GetExerciseAsync(int id)
     {
-      return await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
+      return await FindByCondition(x => x.Id == id).SingleOrDefaultAsync();
     }
 
     public async Task<IEnumerable<Exercise>> GetExercisesAsync(int id)
     {
-      return await FindByCondition(x => x.UserId == id).ToListAsync();
-    }
-
-    public async Task<IEnumerable<Exercise>> GetExercisesByMuscleAsync(int id, string muscle)
-    {
-      return await FindByCondition(x => x.UserId == id && x.MuscleGroup == muscle).ToListAsync();
+      return await FindByCondition(x => x.UserId == id).OrderBy(x => x.Name).ToListAsync();
     }
     public void CreateExercise(Exercise model)
     {

@@ -12,7 +12,6 @@ export const exerciseService = {
 };
 
 function getExercise(id) {
-  console.log("In exercise service :" + id);
   const requestOptions = {
     method: "GET",
     headers: authHeader(),

@@ -18,7 +18,7 @@ namespace BodyJournalAPI.Repository
     }
     public User GetUserById(int id)
     {
-      return FindByCondition(entry => entry.Id == id).SingleOrDefault();
+      return FindByCondition(x => x.Id == id).SingleOrDefault();
     }
 
     public IEnumerable<User> GetAllUsers()
@@ -42,7 +42,6 @@ namespace BodyJournalAPI.Repository
     }
     public User CreateUser(User user, string password)
     {
-      Console.WriteLine("In createuser of user service. user: " + user.ToString());
       if (string.IsNullOrWhiteSpace(password))
         throw new Exception("Password is required");
 

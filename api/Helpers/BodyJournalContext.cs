@@ -33,8 +33,8 @@ namespace BodyJournalAPI.Helpers
       base.OnModelCreating(builder);
       builder.Entity<User>().HasData(
 
-      new User() { Id = 1, FirstName = "a", LastName = "a", UserName = "a", Email = "a@gmail.com", Password = "a", PasswordHash = passwordHashA, PasswordSalt = passwordSaltA },
-      new User() { Id = 2, FirstName = "b", LastName = "b", UserName = "b", Email = "b@gmail.com", Password = "b", PasswordHash = passwordHashB, PasswordSalt = passwordSaltB }
+      new User() { Id = 1, FirstName = "a", LastName = "a", UserName = "a", Email = "a@gmail.com", Password = "a", PasswordHash = passwordHashA, PasswordSalt = passwordSaltA }
+      // new User() { Id = 2, FirstName = "b", LastName = "b", UserName = "b", Email = "b@gmail.com", Password = "b", PasswordHash = passwordHashB, PasswordSalt = passwordSaltB }
       );
       #region Exercise
       builder.Entity<Exercise>().HasData(
@@ -53,10 +53,10 @@ namespace BodyJournalAPI.Helpers
       #endregion
 
       #region Arms 9 through 12
-          new Exercise { Id = 9, Name = "Hammer Curl", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4, UserId = 2 },
+          new Exercise { Id = 9, Name = "Hammer Curl", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
                new Exercise { Id = 10, Name = "Rotating Curl", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
                new Exercise { Id = 11, Name = "Tricep Extension", MuscleGroup = "Arms", Weight = 20, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
-               new Exercise { Id = 12, Name = "Upright Row", MuscleGroup = "Arms", Weight = 70, Reps = 10, Sets = 3, Intensity = 4, UserId = 2 },
+               new Exercise { Id = 12, Name = "Upright Row", MuscleGroup = "Arms", Weight = 70, Reps = 10, Sets = 3, Intensity = 4, UserId = 1 },
       #endregion
 
       #region Abs 13 through 16
@@ -105,9 +105,9 @@ namespace BodyJournalAPI.Helpers
       //c1 and c3
       new Workout { Id = 6, Name = "Chest day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 8, UserId = 1 },
       //9 and 12
-      new Workout { Id = 7, Name = "Arms day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 8, UserId = 2 },
+      new Workout { Id = 7, Name = "Arms day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 8, UserId = 1 },
       //legs 17,(2) and 20,(4)
-      new Workout { Id = 8, Name = "Legs day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 6, UserId = 2 }
+      new Workout { Id = 8, Name = "Legs day", TimeOfWorkout = DateTime.Now, Satisfaction = 5, IntensityScore = 6, UserId = 1 }
   );
       #endregion
 
@@ -149,11 +149,11 @@ namespace BodyJournalAPI.Helpers
 
       #region MuscleGroupFatigue
       builder.Entity<MuscleGroupFatigue>().HasData(
-      new MuscleGroupFatigue { Id = 1, MuscleGroup = "Chest", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 6 },
-      new MuscleGroupFatigue { Id = 2, MuscleGroup = "", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 3 },
-      new MuscleGroupFatigue { Id = 3, MuscleGroup = "", Fatigue = 3, CurrentTime = DateTime.Now, WorkoutId = 4 },
-      new MuscleGroupFatigue { Id = 4, MuscleGroup = "", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 8 },
-      new MuscleGroupFatigue { Id = 5, MuscleGroup = "", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 5 }
+      new MuscleGroupFatigue { Id = 1, MuscleGroup = "Chest", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 6, UserId = 1 },
+      new MuscleGroupFatigue { Id = 2, MuscleGroup = "Shoulders", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 3, UserId = 1 },
+      new MuscleGroupFatigue { Id = 3, MuscleGroup = "Back", Fatigue = 3, CurrentTime = DateTime.Now, WorkoutId = 4, UserId = 1 },
+      new MuscleGroupFatigue { Id = 4, MuscleGroup = "Legs", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 8, UserId = 1 },
+      new MuscleGroupFatigue { Id = 5, MuscleGroup = "Abs", Fatigue = 4, CurrentTime = DateTime.Now, WorkoutId = 5, UserId = 1 }
       // new MuscleGroupFatigue { Id = 6, MuscleGroup = "Chest", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 1 },
       // new MuscleGroupFatigue { Id = 5, MuscleGroup = "Abs", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 5 }
       // new MuscleGroupFatigue { Id = 6, MuscleGroup = "Chest", Fatigue = 1, CurrentTime = DateTime.Now, WorkoutId = 1 },

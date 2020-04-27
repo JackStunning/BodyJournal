@@ -38,7 +38,7 @@ function register(user) {
   };
 
   return fetch(`${config.apiUrl}/users/register`, requestOptions).then(
-    handleResponse()
+    handleResponse
   );
 }
 
@@ -49,7 +49,7 @@ function updateUser(user) {
     body: JSON.stringify(user),
   };
 
-  return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse());
+  return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
 function deleteUser(id) {
@@ -59,6 +59,6 @@ function deleteUser(id) {
   };
 
   return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(
-    handleResponse()
+    handleResponse
   );
 }

@@ -5,9 +5,9 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Exercise from "../Exercises/Exercise";
+import { Exercise } from "../Exercises/Exercise";
 
-const Workout = (props) => {
+export const Workout = (props) => {
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -51,5 +51,3 @@ Workout.propTypes = {
   intensityScore: PropTypes.number,
   exercises: PropTypes.arrayOf(Exercise),
 };
-
-export { Workout };

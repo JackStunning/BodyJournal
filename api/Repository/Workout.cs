@@ -15,17 +15,14 @@ namespace BodyJournalAPI.Repository
     }
     public async Task<Workout> GetWorkoutAsync(int id)
     {
-      Workout model = await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
-
-      IEnumerable<ExerciseWorkout> exerciseWorkouts = await this.BodyJournalContext.ExerciseWorkouts.Where(entry => entry.WorkoutId == id).ToListAsync();
-
-      IEnumerable<Exercise> exercises = await (from e in this.BodyJournalContext.Exercises join ew in exerciseWorkouts on e.Id equals ew.ExerciseId select e).ToListAsync();
+      Workout model = await FindByCondition(x => x.Id == id).
+      SingleOrDefaultAsync();
 
       return model;
     }
     public async Task<IEnumerable<Workout>> GetWorkoutsAsync(int id)
     {
-      return await FindByCondition(entry => entry.UserId == id).ToListAsync();
+      return await FindByCondition(x => x.UserId == id).OrderBy(x => x.Name).ToListAsync();
     }
 
     public void CreateWorkout(Workout model)

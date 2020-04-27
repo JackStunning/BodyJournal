@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { exerciseActions } from "../../_actions";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
+import { Container } from "@material-ui/core";
 
-export const Exercise = () => {
+export const ExerciseDetails = () => {
   const { id } = useParams();
   const exercise = useSelector((state) => state.exercises.item);
   const dispatch = useDispatch();

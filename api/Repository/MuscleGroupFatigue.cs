@@ -16,12 +16,12 @@ namespace BodyJournalAPI.Repository
 
     public async Task<MuscleGroupFatigue> GetMuscleGroupFatigueAsync(int id)
     {
-      return await FindByCondition(entry => entry.Id == id).SingleOrDefaultAsync();
+      return await FindByCondition(x => x.Id == id).SingleOrDefaultAsync();
     }
 
-    public async Task<IEnumerable<MuscleGroupFatigue>> GetMuscleGroupFatiguesAsync()
+    public async Task<IEnumerable<MuscleGroupFatigue>> GetMuscleGroupFatiguesAsync(int id)
     {
-      return await FindAll().ToListAsync();
+      return await FindByCondition(x => x.UserId == id).ToListAsync();
     }
 
     public void CreateMuscleGroupFatigue(MuscleGroupFatigue model)

@@ -7,7 +7,6 @@ namespace BodyJournalAPI.Contracts
   {
     Task<Exercise> GetExerciseAsync(int id);
     Task<IEnumerable<Exercise>> GetExercisesAsync(int id);
-    Task<IEnumerable<Exercise>> GetExercisesByMuscleAsync(int id, string muscle);
     void CreateExercise(Exercise model);
     void UpdateExercise(int id, Exercise model);
     void DeleteExercise(int id);

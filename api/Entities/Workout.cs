@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Collections.Generic;
 namespace BodyJournalAPI.Entities
 {
   [Table("workouts")]

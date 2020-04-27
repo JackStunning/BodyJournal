@@ -4,7 +4,7 @@ namespace BodyJournalAPI.Models
 {
   public class CreateExercise
   {
-    public int Weight { get; set; }
+    public int? Weight { get; set; }
 
     public int Reps { get; set; }
 
@@ -18,5 +18,7 @@ namespace BodyJournalAPI.Models
 
     [Required]
     public int Intensity { get; set; }
+
+    public int? UserId { get; set; }
   }
 }

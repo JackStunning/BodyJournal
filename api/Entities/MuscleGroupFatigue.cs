@@ -13,5 +13,8 @@ namespace BodyJournalAPI.Entities
 
     [ForeignKey(nameof(Workout))]
     public int WorkoutId { get; set; }
+
+    [ForeignKey(nameof(User))]
+    public int UserId { get; set; }
   }
 }

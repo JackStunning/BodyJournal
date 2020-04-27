@@ -44,13 +44,6 @@ const NavigationBar = () => {
             <Toolbar>
               <Grid item xs={2}>
                 <Typography variant="h6" className={classes.title}>
-                  <Link className={classes.navLinks} to="/exercises">
-                    Exercises
-                  </Link>
-                </Typography>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography variant="h6" className={classes.title}>
                   <Link className={classes.navLinks} to="/workouts">
                     Workouts
                   </Link>
@@ -58,8 +51,15 @@ const NavigationBar = () => {
               </Grid>
               <Grid item xs={2}>
                 <Typography variant="h6" className={classes.title}>
-                  <Link className={classes.navLinks} to="/status">
-                    Status
+                  <Link className={classes.navLinks} to="/exercises">
+                    Exercises
+                  </Link>
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography variant="h6" className={classes.title}>
+                  <Link className={classes.navLinks} to="/recovery">
+                    Recovery
                   </Link>
                 </Typography>
               </Grid>
